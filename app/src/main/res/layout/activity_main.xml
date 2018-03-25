@@ -1,87 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="ie.swiftapp.practiceattemptswiftapp.MainActivity"
-    tools:layout_editor_absoluteY="81dp">
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/start_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="144dp"
+        android:onClick="onClickStart"
+        android:text="@string/start"
+        app:layout_constraintEnd_toStartOf="@+id/stop_Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stopwatch_Timer" />
+
+    <Button
+        android:id="@+id/stop_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="144dp"
+        android:onClick="onClickStop"
+        android:text="@string/stop"
+        app:layout_constraintEnd_toStartOf="@+id/reset_Button"
+        app:layout_constraintStart_toEndOf="@+id/start_Button"
+        app:layout_constraintTop_toBottomOf="@+id/stopwatch_Timer" />
+
+    <Button
+        android:id="@+id/reset_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="144dp"
+        android:onClick="onClickReset"
+        android:text="@string/reset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/stop_Button"
+        app:layout_constraintTop_toBottomOf="@+id/stopwatch_Timer" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="80dp"
-        android:layout_height="25dp"
-        android:layout_marginEnd="260dp"
-        android:layout_marginStart="87dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/username"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        android:id="@+id/stopwatch_Timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="207dp"
+        android:layout_marginStart="204dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/_00_00_000"
+        android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="260dp"
-        android:layout_marginLeft="87dp" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="215dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="440dp"
-        android:layout_marginEnd="103dp"
-        android:layout_marginStart="66dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="RtlCompat" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="80dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="346dp"
-        android:layout_marginEnd="260dp"
-        android:layout_marginStart="87dp"
-        android:layout_marginTop="43dp"
-        android:text="@string/password"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        tools:ignore="RtlCompat" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="215dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="297dp"
-        android:layout_marginEnd="103dp"
-        android:layout_marginStart="66dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:ignore="RtlCompat" />
-
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="222dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginStart="192dp"
-        android:layout_marginTop="27dp"
-        android:onClick="SecondActivity.java"
-        android:text="@string/login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
-        tools:ignore="OnClick,RtlCompat" />
-
+        tools:text="" />
 </android.support.constraint.ConstraintLayout>
