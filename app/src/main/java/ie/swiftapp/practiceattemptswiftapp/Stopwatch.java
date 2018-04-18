@@ -1,13 +1,11 @@
 package ie.swiftapp.practiceattemptswiftapp;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -27,7 +25,7 @@ public class Stopwatch extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_stopwatch);
         runTimer();
         startButton = findViewById(R.id.start_Button);
         stopButton = findViewById(R.id.stop_Button);
@@ -43,7 +41,7 @@ public class Stopwatch extends AppCompatActivity{
     private boolean running, reset;
     protected void onClick(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_stopwatch);
     }
 
 //    startButton.OnClickListener(View view);
