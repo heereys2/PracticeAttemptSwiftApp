@@ -14,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stopwatch);
-        UsernameEt = (EditText)findViewById(R.id.etUsername);
-        PasswordEt = (EditText)findViewById(R.id.etPassword);
+        UsernameEt = findViewById(R.id.etUsername);
+        PasswordEt = findViewById(R.id.etPassword);
     }
     public void OnLogin(View view) {
         String username = UsernameEt.getText().toString();
