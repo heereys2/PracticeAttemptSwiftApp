@@ -14,13 +14,13 @@
         android:layout_marginStart="83dp"
         android:layout_marginTop="137dp"
         android:ems="10"
-        android:inputType="text|textPersonName"
         android:text="@string/distance_Text"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/distanceText"
@@ -31,13 +31,28 @@
         android:layout_marginStart="83dp"
         android:layout_marginTop="36dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:text="@string/time_Text"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeText" />
+        app:layout_constraintTop_toBottomOf="@+id/timeText"
+        tools:ignore="RtlCompat" />
+
+    <Button
+        android:id="@+id/returnToStopwatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="176dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="148dp"
+        android:onClick="returnToStopwatch"
+        android:text="@string/ReturnToStopwatch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/distanceText" />
 
 </android.support.constraint.ConstraintLayout>

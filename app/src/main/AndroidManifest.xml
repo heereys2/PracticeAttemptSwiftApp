@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Stopwatch">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,8 +21,8 @@
             android:label="@string/title_activity_store_time"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Main2Activity"
-            android:label="@string/title_activity_main"
+            android:name=".MainActivity"
+            android:label="@string/title_activity_stopwatch"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BackgroundWorker"
@@ -31,6 +31,10 @@
         <activity
             android:name=".Register"
             android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ShowingData"
+            android:label="@string/title_activity_showing_data"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -17,7 +17,9 @@
         android:text="@string/start"
         app:layout_constraintEnd_toStartOf="@+id/reset_Button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="123dp"
+        tools:ignore="RtlCompat" />
 
     <Button
         android:id="@+id/stop_Button"

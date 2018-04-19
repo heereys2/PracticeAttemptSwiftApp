@@ -1,5 +1,6 @@
 package ie.swiftapp.practiceattemptswiftapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -55,7 +56,6 @@ public class Stopwatch extends AppCompatActivity{
         startButton.setVisibility(View.INVISIBLE);
         startButton.setText("Resume");
         saveButton.setVisibility(View.INVISIBLE);
-//        Button button = (Button) view;
 
     }
     public void onClickStop(View view){
