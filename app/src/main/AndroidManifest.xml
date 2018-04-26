@@ -49,4 +49,7 @@
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
 </manifest>
