@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <Button
         android:id="@+id/start_Button"
@@ -60,32 +59,54 @@
         tools:text="" />
 
     <Spinner
-        android:id="@+id/distanceDropDown"
+        android:id="@+id/distanceDropDownCoach"
         android:layout_width="149dp"
         android:layout_height="44dp"
-        android:layout_marginBottom="140dp"
         android:layout_marginEnd="56dp"
         android:layout_marginTop="28dp"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reset_Button" />
 
+    <Spinner
+        android:id="@+id/playerDropdown"
+        android:layout_width="149dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginTop="28dp"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/distanceDropDownCoach" />
+
     <TextView
-        android:id="@+id/distanceTextBox"
+        android:id="@+id/playerTextBox"
         android:layout_width="128dp"
         android:layout_height="44dp"
-        android:layout_marginBottom="140dp"
         android:layout_marginEnd="38dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="28dp"
         android:gravity="center"
         android:text="@string/distanceText"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/distanceDropDown"
+        app:layout_constraintEnd_toStartOf="@+id/distanceDropDownCoach"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/start_Button" />
+
+    <TextView
+        android:id="@+id/distanceTextBox2"
+        android:layout_width="128dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        android:gravity="center"
+        android:text="@string/playerTextBox"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/save_Button"
+        app:layout_constraintEnd_toStartOf="@+id/playerDropdown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playerTextBox" />
 
     <Button
         android:id="@+id/save_Button"
@@ -94,13 +115,12 @@
         android:layout_marginBottom="81dp"
         android:layout_marginEnd="120dp"
         android:layout_marginStart="120dp"
-        android:layout_marginTop="53dp"
-        android:text="@string/SaveTime"
+        android:layout_marginTop="73dp"
         android:onClick="onClickSave"
+        android:text="@string/SaveTime"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/distanceDropDown"
+        app:layout_constraintTop_toBottomOf="@+id/distanceDropDownCoach"
         tools:text="Save Time" />
-
 </android.support.constraint.ConstraintLayout>

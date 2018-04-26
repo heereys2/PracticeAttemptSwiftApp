@@ -29,8 +29,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
-        String login_url = "http://10.0.2.2/login.php";
-        String register_url = "http://10.0.2.2/register.php";
+        String login_url = "http://swiftproject.000webhostapp.com/login.php";
+        String register_url = "http://swiftproject.000webhostapp.com/register.php";
         if(type.equals("login")) {
             try {
                 String user_name = params[1];

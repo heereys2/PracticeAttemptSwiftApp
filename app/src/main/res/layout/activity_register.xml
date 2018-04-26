@@ -18,7 +18,8 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/et_sname"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="16dp" />
 
     <EditText
         android:id="@+id/et_sname"
@@ -97,7 +98,8 @@
         android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_type" />
+        app:layout_constraintTop_toBottomOf="@+id/et_type"
+        android:layout_marginLeft="115dp" />
 
     <EditText
         android:id="@+id/et_gender"

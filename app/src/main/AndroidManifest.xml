@@ -21,8 +21,8 @@
             android:label="@string/title_activity_store_time"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Main2Activity"
-            android:label="@string/title_activity_main"
+            android:name=".Stopwatch"
+            android:label="@string/title_activity_stopwatch"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BackgroundWorker"
@@ -31,7 +31,22 @@
         <activity
             android:name=".Register"
             android:label="@string/title_activity_register"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".showData"
+            android:label="@string/title_activity_show_data"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CoachStopwatch"></activity>
+
+        <activity
+            android:name=".onePlayerSW"
+            android:label="@string/onePlayerSW"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".multiPlayerSW"
+            android:label="@string/multiPlayerSW"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
