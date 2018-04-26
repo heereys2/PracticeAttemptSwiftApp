@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stopwatch);
+        setContentView(R.layout.activity_main);
         UsernameEt = findViewById(R.id.etUsername);
         PasswordEt = findViewById(R.id.etPassword);
     }

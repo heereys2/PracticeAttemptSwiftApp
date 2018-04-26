@@ -33,9 +33,20 @@
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ShowingData"
-            android:label="@string/title_activity_showing_data"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".showData"
+            android:label="@string/title_activity_show_data"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CoachStopwatch"></activity>
+
+        <activity
+            android:name=".onePlayerSW"
+            android:label="@string/onePlayerSW"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".multiPlayerSW"
+            android:label="@string/multiPlayerSW"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
