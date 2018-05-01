@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,40 +23,44 @@ public class onePlayerSW extends AppCompatActivity {
     private Button saveButton;
     private Spinner distanceDropdown;
     private Spinner playerDropdown;
+    private ArrayAdapter<String> adapter;
+    private ArrayAdapter<String> adapterPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stopwatch);
+        setContentView(R.layout.oneplayersw);
         runTimer();
 
-//        startButton = findViewById(R.id.start_Button);
-//        stopButton = findViewById(R.id.stop_Button);
-//        resetButton = findViewById(R.id.reset_Button);
-//        saveButton = findViewById(R.id.save_Button);
-//        playerDropdown = findViewById(R.id.playerDropdown);
-//        String[] playerTypes = new String[]{"20 meters", "50 Meters", "100 meters", "200 meters", "400 meters", "1 km"};
-//        ArrayAdapter<String> adapterPlayer = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, playerTypes);
-//        playerDropdown.setAdapter(adapterPlayer);
-//        distanceDropdown = findViewById(R.id.distanceDropDownCoach);
-//        String[] distanceTypes = new String[]{"20 meters", "50 Meters", "100 meters", "200 meters", "400 meters", "1 km"};
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, distanceTypes);
-//        distanceDropdown.setAdapter(adapter);
-//
-//        startButton.setVisibility(View.VISIBLE);
-//        stopButton.setVisibility(View.INVISIBLE);
-//        resetButton.setVisibility(View.VISIBLE);
-//        saveButton.setVisibility(View.INVISIBLE);
+        String[] playerTypes = new String[]{"20 meters", "50 Meters", "100 meters", "200 meters", "400 meters", "1 km"};
+        adapterPlayer = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, playerTypes);
+        String[] distanceTypes = new String[]{"20 meters", "50 Meters", "100 meters", "200 meters", "400 meters", "1 km"};
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, distanceTypes);
+        Handler handler = new Handler();
+        handler.postDelayed(task, 10);
+
     }
     long MillisecondTime,StartTime,TimeBuff,UpdateTime = 0L;
     int Seconds, Minutes, MilliSeconds ;
     private boolean running, reset;
-    protected void onClick(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stopwatch);
-    }
+    private Runnable task = new Runnable() {
+        @Override
+        public void run(){
 
-//    startButton.OnClickListener(View view);
+        startButton = findViewById(R.id.start_Button);
+        stopButton = findViewById(R.id.stop_Button);
+        resetButton = findViewById(R.id.reset_Button);
+        saveButton = findViewById(R.id.save_Button);
+        playerDropdown = findViewById(R.id.playerDropdown);
+        playerDropdown.setAdapter(adapterPlayer);
+        distanceDropdown = findViewById(R.id.distanceDropDownCoach);
+        distanceDropdown.setAdapter(adapter);
 
+        startButton.setVisibility(View.VISIBLE);
+        stopButton.setVisibility(View.INVISIBLE);
+        resetButton.setVisibility(View.VISIBLE);
+        saveButton.setVisibility(View.INVISIBLE);
+        }
+    };
 
     public void onClickStart(View view) {
         running = true;

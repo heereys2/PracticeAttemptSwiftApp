@@ -1,6 +1,5 @@
 package ie.swiftapp.practiceattemptswiftapp;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -116,8 +115,6 @@ public class Stopwatch extends AppCompatActivity{
         String[] distanceTypes = new String[]{"20 meters", "50 Meters", "100 meters", "200 meters", "400 meters", "1 km"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, distanceTypes);
         distanceDropdown.setAdapter(adapter);
-
-
     }
     public void onClickSave(View view){
         Intent goToStoreTime = new Intent(this, storeTimeActivity.class);
@@ -131,7 +128,4 @@ public class Stopwatch extends AppCompatActivity{
         goToStoreTime.putExtra("savedDistance", storingDistance);
         startActivity(goToStoreTime);
     }
-
-
-
 }
