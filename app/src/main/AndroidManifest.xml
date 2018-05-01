@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ie.swiftapp.practiceattemptswiftapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +18,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".storeTimeActivity"
+            android:label="@string/title_activity_store_time"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Stopwatch"
+            android:label="@string/title_activity_stopwatch"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BackgroundWorker"
+            android:label="@string/title_activity_background_worker"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Register"
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".showData"
+            android:label="@string/title_activity_show_data"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CoachStopwatch" />
+        <activity
+            android:name=".onePlayerSW"
+            android:label="@string/onePlayerSW"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".multiPlayerSW"
+            android:label="@string/multiPlayerSW"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CoachHome" />
+        <activity android:name=".PlayerHome" />
+        <activity android:name=".CreateTeam"></activity>
     </application>
 
 </manifest>
