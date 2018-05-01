@@ -34,6 +34,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         String type = params[0];
         String login_url = "http://swiftproject.000webhostapp.com/login.php";
         String register_url = "http://swiftproject.000webhostapp.com/register.php";
+        String createTeam_url = "http://swiftproject.000webhostapp.com/createteam.php";
         String club_url = "http://swiftproject.000webhostapp.com/clubs.php";
         if(type.equals("login")) {
             try {
@@ -104,7 +105,41 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+        } else if(type.equals("createteam")) {
+            try {
+                String teamName = params[1];
+                String clubName = params[2];
+                String sport = params[3];
+                URL url = new URL(createTeam_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data = URLEncoder.encode("teamName","UTF-8")+"="+URLEncoder.encode(teamName,"UTF-8")+"&"+
+                        URLEncoder.encode("clubName","UTF-8")+"="+URLEncoder.encode(clubName,"UTF-8")+"&"+
+                        URLEncoder.encode("sport","UTF-8")+"="+URLEncoder.encode(sport,"UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result ="";
+                String line = "";
+                while((line = bufferedReader.readLine())!= null) {
+                    result+= line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else if (type.equals("Clubs")){
             try {
                 URL url = new URL(club_url);
@@ -156,6 +191,10 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
             Intent k = new Intent(context, PlayerHome.class);
             context.startActivity(k);
+        } else if (result.equals("Team Created successfully")) {
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+            Intent j = new Intent(context, CoachHome.class);
+            context.startActivity(j);
         } else if (result.equals("Login Failed")) {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
         }

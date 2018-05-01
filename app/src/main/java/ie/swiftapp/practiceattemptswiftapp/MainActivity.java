@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         PasswordEt = findViewById(R.id.etPassword);
     }
     public void OnLogin(View view) {
-        String username = UsernameEt.getText().toString();
+        final String username = UsernameEt.getText().toString();
         String password = PasswordEt.getText().toString();
         String type = "login";
 
