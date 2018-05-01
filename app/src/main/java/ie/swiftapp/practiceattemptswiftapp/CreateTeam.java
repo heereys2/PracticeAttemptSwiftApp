@@ -47,7 +47,7 @@ public class CreateTeam extends AppCompatActivity implements AdapterView.OnItemS
         String type = "createteam";
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute(type, str_teamName, str_clubName, str_sport);
+        backgroundWorker.execute(type, str_teamName, str_clubName, str_sport, user_name);
 
 
     }

@@ -113,6 +113,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 String teamName = params[1];
                 String clubName = params[2];
                 String sport = params[3];
+                String username = params[4];
                 URL url = new URL(createTeam_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -122,7 +123,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                 String post_data = URLEncoder.encode("teamName","UTF-8")+"="+URLEncoder.encode(teamName,"UTF-8")+"&"+
                         URLEncoder.encode("clubName","UTF-8")+"="+URLEncoder.encode(clubName,"UTF-8")+"&"+
-                        URLEncoder.encode("sport","UTF-8")+"="+URLEncoder.encode(sport,"UTF-8");
+                        URLEncoder.encode("sport","UTF-8")+"="+URLEncoder.encode(sport,"UTF-8") + "&" +
+                        URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
