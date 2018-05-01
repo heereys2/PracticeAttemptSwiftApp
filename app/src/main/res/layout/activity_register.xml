@@ -4,78 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ie.swiftapp.practiceattemptswiftapp.Register">
+    tools:context="ie.swiftapp.practiceattemptswiftapp.Register"
+    tools:layout_editor_absoluteY="25dp"><![CDATA[
     tools:layout_editor_absoluteY="81dp">
 
-    <EditText
-        android:id="@+id/et_fname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="34dp"
-        android:ems="10"
-        android:hint="First Name"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/et_sname"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="16dp" />
-
-    <EditText
-        android:id="@+id/et_sname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Surname"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/et_email"
-        app:layout_constraintStart_toStartOf="@+id/et_fname"
-        app:layout_constraintTop_toBottomOf="@+id/et_fname" />
+    ]]>
 
     <EditText
         android:id="@+id/et_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="45dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/et_password"
-        app:layout_constraintStart_toStartOf="@+id/et_sname"
-        app:layout_constraintTop_toBottomOf="@+id/et_sname" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
         android:id="@+id/et_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
         android:ems="10"
         android:hint="Create Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/et_username"
-        app:layout_constraintStart_toStartOf="@+id/et_email"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintStart_toStartOf="@+id/et_username"
         app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
-
-    <EditText
-        android:id="@+id/et_age"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Age"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/et_type"
-        app:layout_constraintStart_toStartOf="@+id/et_country"
-        app:layout_constraintTop_toBottomOf="@+id/et_country" />
-
-    <EditText
-        android:id="@+id/et_country"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Country"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/et_age"
-        app:layout_constraintStart_toStartOf="@+id/et_gender"
-        app:layout_constraintTop_toBottomOf="@+id/et_gender" />
 
     <EditText
         android:id="@+id/et_username"
@@ -84,44 +44,69 @@
         android:ems="10"
         android:hint="Create Username"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/et_gender"
-        app:layout_constraintStart_toStartOf="@+id/et_password"
-        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+        app:layout_constraintStart_toStartOf="@+id/et_email"
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
     <Button
         android:id="@+id/btn_reg"
         android:layout_width="121dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="7dp"
-        android:layout_marginStart="115dp"
+        android:layout_marginBottom="239dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
         android:onClick="OnReg"
         android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_type"
-        android:layout_marginLeft="115dp" />
+        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
-    <EditText
-        android:id="@+id/et_gender"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="224dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Gender"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/et_country"
-        app:layout_constraintStart_toStartOf="@+id/et_username"
-        app:layout_constraintTop_toBottomOf="@+id/et_username" />
-
-    <EditText
-        android:id="@+id/et_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        android:hint="Type"
-        android:inputType="textPersonName"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/btn_reg"
-        app:layout_constraintStart_toStartOf="@+id/et_age"
-        app:layout_constraintTop_toBottomOf="@+id/et_age" />
+        app:layout_constraintStart_toStartOf="@+id/et_password"
+        app:layout_constraintTop_toBottomOf="@+id/et_password">
+
+        <RadioButton
+            android:id="@+id/radioCoach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:checked="true"
+            android:onClick="checkButton"
+            android:text="Coach"
+            app:layout_constraintStart_toStartOf="@+id/et_password"
+            app:layout_constraintTop_toBottomOf="@+id/et_password" />
+
+        <RadioButton
+            android:id="@+id/radioPlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginTop="5dp"
+            android:onClick="checkButton"
+            android:text="Player"
+            app:layout_constraintEnd_toEndOf="@+id/et_password"
+            app:layout_constraintTop_toBottomOf="@+id/et_password" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="27dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:text="Please fill in all the following fields to register:"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/et_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
