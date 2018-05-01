@@ -69,15 +69,10 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             }
         } else if(type.equals("register")) {
             try {
-                String firstname = params[1];
-                String surname = params[2];
-                String email = params[3];
-                String password = params[4];
-                String username = params[5];
-                String gender = params[6];
-                String country = params[7];
-                String age = params[8];
-                String type1 = params[9];
+                String email = params[1];
+                String username = params[2];
+                String password = params[3];
+                String userType = params[4];
                 URL url = new URL(register_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -85,15 +80,10 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String post_data = URLEncoder.encode("fname","UTF-8")+"="+URLEncoder.encode(firstname,"UTF-8")+"&"+
-                        URLEncoder.encode("sname","UTF-8")+"="+URLEncoder.encode(surname,"UTF-8")+"&"+
-                        URLEncoder.encode("email","UTF-8")+"="+URLEncoder.encode(email,"UTF-8")+"&"+
-                        URLEncoder.encode("age","UTF-8")+"="+URLEncoder.encode(age,"UTF-8")+"&"+
-                        URLEncoder.encode("sex","UTF-8")+"="+URLEncoder.encode(gender,"UTF-8")+"&"+
-                        URLEncoder.encode("country","UTF-8")+"="+URLEncoder.encode(country,"UTF-8")+"&"+
+                String post_data = URLEncoder.encode("email","UTF-8")+"="+URLEncoder.encode(email,"UTF-8")+"&"+
                         URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+
                         URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8")+"&"+
-                        URLEncoder.encode("type","UTF-8")+"="+URLEncoder.encode(type1,"UTF-8");
+                        URLEncoder.encode("userType","UTF-8")+"="+URLEncoder.encode(userType,"UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
