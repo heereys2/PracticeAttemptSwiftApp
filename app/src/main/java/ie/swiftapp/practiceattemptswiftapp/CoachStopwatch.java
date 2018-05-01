@@ -16,6 +16,8 @@ public class CoachStopwatch extends AppCompatActivity {
     public void onClickOne(View view){
         Intent goToClickOne = new Intent(this, onePlayerSW.class);
         startActivity(goToClickOne);
+//        onePlayerSW onePlayerSW = new onePlayerSW();
+//        onePlayerSW.startUp();
     }
 
     public void onClickMulti(View view){

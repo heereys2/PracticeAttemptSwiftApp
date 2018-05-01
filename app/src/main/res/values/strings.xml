@@ -33,5 +33,9 @@
     <string name="playerTextBox">Player</string>
     <string name="onePlayerSW">onePlayer</string>
     <string name="multiPlayerSW">multiPlayer</string>
+    <string name="chooseclubtext">Choose Club</string>
+    <string name="submitclubchoice">Submit</string>
+    <string name="registerclub">Club not listed?</string>
+    <string name="gotoregisterclub">Register Here</string>
 
 </resources>

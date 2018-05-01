@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ie.swiftapp.practiceattemptswiftapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -36,20 +38,16 @@
             android:name=".showData"
             android:label="@string/title_activity_show_data"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CoachStopwatch"></activity>
-
+        <activity android:name=".CoachStopwatch" />
         <activity
             android:name=".onePlayerSW"
             android:label="@string/onePlayerSW"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".multiPlayerSW"
             android:label="@string/multiPlayerSW"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CoachClubSelection"></activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
 
 </manifest>
