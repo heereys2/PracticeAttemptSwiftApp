@@ -23,12 +23,14 @@ import java.net.URLEncoder;
  * Created by user on 3/14/2018.
  */
 
+
 public class BackgroundWorker extends AsyncTask<String,Void,String> {
     Context context;
     AlertDialog alertDialog;
     BackgroundWorker (Context ctx) {
         context = ctx;
     }
+    public String username;
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
@@ -39,6 +41,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         if(type.equals("login")) {
             try {
                 String user_name = params[1];
+                username = user_name;
                 String password = params[2];
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -186,6 +189,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         } else if (result.equals("Coach Login Success")) {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
             Intent j = new Intent(context, CoachHome.class);
+            j.putExtra("username",username);
             context.startActivity(j);
         } else if (result.equals("Player Login Success")) {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
