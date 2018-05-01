@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ie.swiftapp.practiceattemptswiftapp.CoachClubSelection">
+
+    <Spinner
+        android:id="@+id/chooseClubSpinner"
+        android:layout_width="274dp"
+        android:layout_height="58dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseClubText" />
+
+    <TextView
+        android:id="@+id/chooseClubText"
+        android:layout_width="195dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="113dp"
+        android:text="@string/chooseclubtext"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/submitClubChoice"
+        android:layout_width="178dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="117dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="38dp"
+        android:text="@string/submitclubchoice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseClubSpinner" />
+
+    <TextView
+        android:id="@+id/registerClub"
+        android:layout_width="257dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="77dp"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="105dp"
+        android:text="@string/registerclub"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/submitClubChoice" />
+
+    <Button
+        android:id="@+id/goToRegisterClub"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="53dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginStart="129dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/gotoregisterclub"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerClub" />
+</android.support.constraint.ConstraintLayout>

@@ -39,6 +39,9 @@
         <item>GAA Hurling</item>
         <item>Rugby</item>
     </string-array>
-
+    <string name="chooseclubtext">Choose Club</string>
+    <string name="submitclubchoice">Submit</string>
+    <string name="registerclub">Club not listed?</string>
+    <string name="gotoregisterclub">Register Here</string>
 
 </resources>

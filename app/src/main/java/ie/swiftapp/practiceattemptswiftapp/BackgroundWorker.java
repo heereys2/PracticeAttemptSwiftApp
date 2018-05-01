@@ -18,6 +18,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+
 /**
  * Created by user on 3/14/2018.
  */
@@ -34,6 +35,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         String login_url = "http://swiftproject.000webhostapp.com/login.php";
         String register_url = "http://swiftproject.000webhostapp.com/register.php";
         String createTeam_url = "http://swiftproject.000webhostapp.com/createteam.php";
+        String club_url = "http://swiftproject.000webhostapp.com/clubs.php";
         if(type.equals("login")) {
             try {
                 String user_name = params[1];
@@ -122,6 +124,29 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result ="";
+                String line = "";
+                while((line = bufferedReader.readLine())!= null) {
+                    result+= line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (type.equals("Clubs")){
+            try {
+                URL url = new URL(club_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("GET");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
                 String result ="";
