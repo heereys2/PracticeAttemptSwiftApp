@@ -2,7 +2,9 @@ package ie.swiftapp.practiceattemptswiftapp;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -146,7 +148,28 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         alertDialog.setTitle("Login Status");
     }
 
-
+    @Override
+    protected void onPostExecute(String result) {
+        //alertDialog.setMessage(result);
+        //alertDialog.show();
+        if (result.equals("Registration Successful. Please Login")) {
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+            Intent i = new Intent(context, MainActivity.class);
+            context.startActivity(i);
+        } else if (result.equals("Please fill in all fields")) {
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        } else if (result.equals("Coach Login Success")) {
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+            Intent j = new Intent(context, CoachHome.class);
+            context.startActivity(j);
+        } else if (result.equals("Player Login Success")) {
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+            Intent k = new Intent(context, PlayerHome.class);
+            context.startActivity(k);
+        } else if (result.equals("Login Failed")) {
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        }
+    }
 
     @Override
     protected void onProgressUpdate(Void... values) {
