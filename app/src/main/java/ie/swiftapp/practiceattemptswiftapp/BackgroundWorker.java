@@ -206,6 +206,29 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else if (type.equals("Teams")){
+            try {
+                URL url = new URL(teams_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("GET");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result ="";
+                String line = "";
+                while((line = bufferedReader.readLine())!= null) {
+                    result+= line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -235,6 +258,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         } else if (result.equals("Player Login Success")) {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
             Intent k = new Intent(context, PlayerHome.class);
+            k.putExtra("username",username);
             context.startActivity(k);
         } else if (result.equals("Team Created successfully")) {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
