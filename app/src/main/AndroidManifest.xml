@@ -47,8 +47,12 @@
             android:name=".multiPlayerSW"
             android:label="@string/multiPlayerSW"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CoachHome" />
-        <activity android:name=".PlayerHome"></activity>
+        <activity android:name=".CoachTeamChoice" />
+        <activity android:name=".PlayerHome" />
+        <activity android:name=".CoachClubSelection" />
+        <activity android:name=".CreateClub" />
+        <activity android:name=".CreateTeam" />
+        <activity android:name=".CoachHome"></activity>
     </application>
 
 </manifest>
