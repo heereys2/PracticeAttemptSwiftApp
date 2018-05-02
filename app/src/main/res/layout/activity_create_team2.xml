@@ -8,49 +8,37 @@
     tools:layout_editor_absoluteY="81dp">
 
     <EditText
-        android:id="@+id/et_TeamName"
+        android:id="@+id/newTeamName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
-        android:hint="Team Name"
+        android:hint="@string/teamNameRegister"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_ClubName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Club"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/et_TeamName"
-        app:layout_constraintTop_toBottomOf="@+id/et_TeamName" />
-
     <Spinner
-        android:id="@+id/spinner_Sport"
+        android:id="@+id/spinner_Sport_Team"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="182dp"
-        android:layout_marginStart="181dp"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
+        android:layout_marginTop="21dp"
+        android:text="@string/sportSpinnerRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_ClubName" />
+        app:layout_constraintTop_toBottomOf="@+id/newTeamName" />
 
     <Button
-        android:id="@+id/btn_MakeClub"
+        android:id="@+id/btn_MakeTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:onClick="onMakeClub"
-        android:text="@string/createClubButton"
+        android:layout_marginTop="89dp"
+        android:onClick="onMakeTeam"
+        android:text="@string/onClickCreateTeam"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_Sport" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_Sport_Team"
+        tools:ignore="OnClick" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,32 +1,30 @@
 package ie.swiftapp.practiceattemptswiftapp;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class CreateTeam extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class CreateClub extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText teamName, clubName;
     String sportChoice;
     String user_name;
-    String clubChoice;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_team2);
+        setContentView(R.layout.activity_create_team);
         user_name = getIntent().getStringExtra("username");
-        clubChoice = getIntent().getStringExtra("clubchosen");
-        Spinner spinner = findViewById(R.id.spinner_Sport_Team);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sports, android.R.layout.simple_spinner_dropdown_item);
+        Spinner spinner = findViewById(R.id.spinner_Sport);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sports, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
+        spinner.setOnItemSelectedListener(this);
 
         teamName = findViewById(R.id.et_TeamName);
         clubName = findViewById(R.id.et_ClubName);
@@ -42,7 +40,7 @@ public class CreateTeam extends AppCompatActivity implements AdapterView.OnItemS
 
     }
 
-    public void onMakeTeam(View view) {
+    public void onMakeClub(View view) {
         String str_teamName = teamName.getText().toString();
         String str_clubName = clubName.getText().toString();
         String str_sport = sportChoice.toString();

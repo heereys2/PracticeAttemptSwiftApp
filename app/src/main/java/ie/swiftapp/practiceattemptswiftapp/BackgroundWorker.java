@@ -31,7 +31,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         context = ctx;
     }
     public String username;
-    public String[] amountOfClubs;
+    public String clubNameSpinnerChoice;
+    public String[] userTeams;
     public String[] amountOfTeams;
     @Override
     protected String doInBackground(String... params) {
@@ -82,9 +83,9 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 String line2 = "";
                 while((line2 = bufferedReader2.readLine())!= null) {
                     String [] lineArray = line2.split("//");
-                    amountOfClubs = new String[lineArray.length];
+                    userTeams = new String[lineArray.length];
                     for(int i =0; i < lineArray.length; i++) {
-                        amountOfClubs[i] =lineArray[i].replaceAll("//","");
+                        userTeams[i] =lineArray[i].replaceAll("//","");
                     }
                 }
                 bufferedReader2.close();
@@ -133,7 +134,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else if(type.equals("createteam")) {
+        } else if(type.equals("createclub")) {
             try {
                 String teamName = params[1];
                 String clubName = params[2];
@@ -173,6 +174,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         } else if (type.equals("coachTeam")){
             try {
                 String clubName = params[1];
+                clubNameSpinnerChoice = clubName;
                 URL url = new URL(teams_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("GET");
@@ -228,8 +230,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
         } else if (result.equals("Coach Login Success")) {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-            Intent j = new Intent(context, CoachClubSelection.class);
-            j.putExtra("clubsArray", amountOfClubs);
+            Intent j = new Intent(context, CoachTeamChoice.class);
+            j.putExtra("clubsArray", userTeams);
             j.putExtra("username",username);
             context.startActivity(j);
         } else if (result.equals("Player Login Success")) {
@@ -238,7 +240,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             context.startActivity(k);
         } else if (result.equals("Team Created successfully")) {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-            Intent j = new Intent(context, CoachHome.class);
+            Intent j = new Intent(context, CoachTeamChoice.class);
             context.startActivity(j);
         } else if (result.equals("Login Failed")) {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
@@ -246,7 +248,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
             Intent coachWithTeams = new Intent(context, CoachClubSelection.class);
             coachWithTeams.putExtra("teamsArray", amountOfTeams);
-            coachWithTeams.putExtra("clubsArray", amountOfClubs);
+            coachWithTeams.putExtra("clubsArray", userTeams);
+            coachWithTeams.putExtra("clubName", clubNameSpinnerChoice);
             context.startActivity(coachWithTeams);
         }
     }
