@@ -12,13 +12,14 @@ public class CreateTeam extends AppCompatActivity implements AdapterView.OnItemS
 
     EditText teamName, clubName;
     String sportChoice;
+    String user_name;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_team);
-
+        user_name = getIntent().getStringExtra("username");
         Spinner spinner = findViewById(R.id.spinner_Sport);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sports, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -46,7 +47,7 @@ public class CreateTeam extends AppCompatActivity implements AdapterView.OnItemS
         String type = "createteam";
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute(type, str_teamName, str_clubName, str_sport);
+        backgroundWorker.execute(type, str_teamName, str_clubName, str_sport, user_name);
 
 
     }

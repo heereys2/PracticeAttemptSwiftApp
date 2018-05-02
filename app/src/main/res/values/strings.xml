@@ -43,5 +43,6 @@
     <string name="submitclubchoice">Submit</string>
     <string name="registerclub">Club not listed?</string>
     <string name="gotoregisterclub">Register Here</string>
+    <string name="choose_team">Choose Team</string>
 
 </resources>
