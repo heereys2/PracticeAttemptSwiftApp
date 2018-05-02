@@ -44,5 +44,8 @@
     <string name="registerclub">Club not listed?</string>
     <string name="gotoregisterclub">Register Here</string>
     <string name="choose_team">Choose Team</string>
+    <string name="coach_overview">Coach Overview</string>
+    <string name="my_teams">My Teams</string>
+    <string name="click_here_to_create_team">Click Here to Create Team</string>
 
 </resources>
