@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlayerHome">
+    tools:context=".PlayerHome"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/textView3"
@@ -36,12 +37,12 @@
         android:id="@+id/btnCreateTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="148dp"
-        android:layout_marginLeft="96dp"
-        android:layout_marginStart="96dp"
+        android:layout_marginBottom="58dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginStart="104dp"
         android:onClick="onJoinTeam"
         android:text="Click Here to Join Team"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinPlayerTeamList" />
 
@@ -55,4 +56,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="43dp"
+        android:onClick="onStopwatchTest"
+        android:text="Go to stopwatch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCreateTeam" />
 </android.support.constraint.ConstraintLayout>

@@ -41,6 +41,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         String createTeam_url = "http://swiftproject.000webhostapp.com/createteam.php";
         String club_url = "http://swiftproject.000webhostapp.com/clubs.php";
         String teams_url = "http://swiftproject.000webhostapp.com/teams.php";
+        String savetime_url = "http://swiftproject.000webhostapp.com/savetime.php";
+        String saveplayerdata_url = "http://swiftproject.000webhostapp.com/saveplayerdata.php";
         if(type.equals("login")) {
             try {
                 String user_name = params[1];
@@ -229,6 +231,80 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else if(type.equals("playerentereddata")) {
+            try {
+                String username = params[1];
+                String eventtype = params[2];
+                String value = params[3];
+                String date = params[4];
+                URL url = new URL(saveplayerdata_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+
+                        URLEncoder.encode("eventtype","UTF-8")+"="+URLEncoder.encode(eventtype,"UTF-8")+"&"+
+                        URLEncoder.encode("value","UTF-8")+"="+URLEncoder.encode(value,"UTF-8")+"&"+
+                        URLEncoder.encode("date","UTF-8")+"="+URLEncoder.encode(date,"UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result ="";
+                String line = "";
+                while((line = bufferedReader.readLine())!= null) {
+                    result+= line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if(type.equals("playerSaveTime")) {
+            try {
+                String username = params[1];
+                String distance = params[2];
+                String time = params[3];
+                String date = params[4];
+                URL url = new URL(savetime_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+
+                        URLEncoder.encode("distance","UTF-8")+"="+URLEncoder.encode(distance,"UTF-8")+"&"+
+                        URLEncoder.encode("time","UTF-8")+"="+URLEncoder.encode(time,"UTF-8")+"&"+
+                        URLEncoder.encode("date","UTF-8")+"="+URLEncoder.encode(date,"UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result ="";
+                String line = "";
+                while((line = bufferedReader.readLine())!= null) {
+                    result+= line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -272,6 +348,12 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             coachWithTeams.putExtra("teamsArray", amountOfTeams);
             coachWithTeams.putExtra("clubsArray", amountOfClubs);
             context.startActivity(coachWithTeams);
+        }
+        else if (result.equals("Time saved successfully")){
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        }
+        else if (result.equals("Data saved successfully")){
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
         }
     }
 

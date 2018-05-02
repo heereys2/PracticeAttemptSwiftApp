@@ -20,4 +20,8 @@ public class PlayerHome extends AppCompatActivity {
         r.putExtra("username", user_name);
         PlayerHome.this.startActivity(r);
     }
+    public void onStopwatchTest(View view) {
+        Intent s = new Intent(PlayerHome.this, PlayerTeamOverview.class);
+        PlayerHome.this.startActivity(s);
+    }
 }
