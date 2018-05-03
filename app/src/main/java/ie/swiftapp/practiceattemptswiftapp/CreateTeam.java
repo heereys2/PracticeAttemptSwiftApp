@@ -45,7 +45,7 @@ public class CreateTeam extends AppCompatActivity implements AdapterView.OnItemS
         String str_clubName = clubName;
         String str_sport = sportChoice.toString();
         String str_username = user_name.toString();
-        String type = "createteam";
+        String type = "createclub";
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute(type, str_teamName, str_clubName, str_sport, str_username);
