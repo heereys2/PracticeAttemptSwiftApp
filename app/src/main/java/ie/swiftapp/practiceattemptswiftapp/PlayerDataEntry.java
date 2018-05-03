@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.text.SimpleDateFormat;
@@ -12,21 +13,21 @@ import java.util.Calendar;
 
 public class PlayerDataEntry extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    String dataChoice, dataValue, date;
+    String dataChoice, dataValue, date, username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_data_entry);
 
+        username = getIntent().getStringExtra("username");
         Spinner spinner = findViewById(R.id.spinner_dataEntry);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.dataentry, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        dataValue = String.valueOf(findViewById(R.id.etdataValue));
-        date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+        date = new SimpleDateFormat("dd_MM_yyyy").format(Calendar.getInstance().getTime());
     }
 
     @Override
@@ -40,7 +41,8 @@ public class PlayerDataEntry extends AppCompatActivity implements AdapterView.On
     }
 
     public void onDataEntered(View view) {
-        String str_username = "John";
+        dataValue = ((EditText) findViewById(R.id.etdataValue)).getText().toString();
+        String str_username = username;
         String str_datachoice = dataChoice.toString();
         String str_datavalue = dataValue.toString();
         String str_date = date.toString();

@@ -48,6 +48,7 @@
             android:name=".multiPlayerSW"
             android:label="@string/multiPlayerSW"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".PlayerTeamJoin" />
         <activity android:name=".CoachHome" />
         <activity android:name=".PlayerHome" />
         <activity android:name=".CoachClubSelection" />
