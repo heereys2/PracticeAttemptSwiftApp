@@ -25,10 +25,12 @@ public class Stopwatch extends AppCompatActivity{
     private Button resetButton;
     private Button saveButton;
     private Spinner distanceDropdown;
+    String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stopwatch);
+        username = getIntent().getStringExtra("username");
         runTimer();
         startButton = findViewById(R.id.start_Button);
         stopButton = findViewById(R.id.stop_Button);
@@ -134,7 +136,7 @@ public class Stopwatch extends AppCompatActivity{
         String date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute(type, "John", storingDistance, completeTime, date);
+        backgroundWorker.execute(type, username, storingDistance, completeTime, date);
 
         startActivity(goToStoreTime);
     }

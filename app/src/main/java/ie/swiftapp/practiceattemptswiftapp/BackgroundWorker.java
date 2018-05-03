@@ -36,6 +36,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     public String[] userTeams;
     public String[] amountOfTeams;
     public String[] amountOfClubs;
+    public String[] playerTeams;
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
@@ -48,6 +49,10 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         String saveplayerdata_url = "http://swiftproject.000webhostapp.com/saveplayerdata.php";
         String allclubs_url = "http://swiftproject.000webhostapp.com/allclubs.php";
         String selectplayers_url = "http://swiftproject.000webhostapp.com/selectplayer.php";
+        String playerteamlist_url = "http://swiftproject.000webhostapp.com/playerteamlist.php";
+        String playerclubjoin_url = "http://swiftproject.000webhostapp.com/playerclubjoin.php";
+        String playerteamchoice_url = "http://swiftproject.000webhostapp.com/teamsforplayer.php";
+        String addplayertoteam_url = "http://swiftproject.000webhostapp.com/addplayertoteam.php";
         if(type.equals("login")) {
             try {
                 String user_name = params[1];
@@ -94,9 +99,31 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                         userTeams[i] =lineArray[i].replaceAll("//","");
                     }
                 }
-                bufferedReader2.close();
-                inputStream2.close();
-                httpURLConnection2.disconnect();
+                URL url3 = new URL(playerteamlist_url);
+                HttpURLConnection httpURLConnection3 = (HttpURLConnection)url3.openConnection();
+                httpURLConnection3.setRequestMethod("GET");
+                httpURLConnection3.setDoOutput(true);
+                httpURLConnection3.setDoInput(true);
+                OutputStream outputStream3 = httpURLConnection3.getOutputStream();
+                BufferedWriter bufferedWriter3 = new BufferedWriter(new OutputStreamWriter(outputStream3, "UTF-8"));
+                String post_data3 = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8");
+                bufferedWriter3.write(post_data3);
+                bufferedWriter3.flush();
+                bufferedWriter3.close();
+                outputStream.close();
+                InputStream inputStream3 = httpURLConnection3.getInputStream();
+                BufferedReader bufferedReader3 = new BufferedReader(new InputStreamReader(inputStream3,"iso-8859-1"));
+                String line3 = "";
+                while((line3 = bufferedReader3.readLine())!= null) {
+                    String [] lineArray = line3.split("//");
+                    playerTeams = new String[lineArray.length];
+                    for(int i =0; i < lineArray.length; i++) {
+                        playerTeams[i] =lineArray[i].replaceAll("//","");
+                    }
+                }
+                bufferedReader3.close();
+                inputStream3.close();
+                httpURLConnection3.disconnect();
                 return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -414,6 +441,117 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 e.printStackTrace();
             }
 
+        } else if (type.equals("allclubsforplayers")){
+            try{
+                String user = params[1];
+                username = user;
+                URL url = new URL(playerclubjoin_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("GET");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String line = "";
+                String result = "";
+                while((line = bufferedReader.readLine())!= null) {
+                    String [] lineArray = line.split("//");
+                    amountOfClubs = new String[(lineArray.length - 1)];
+                    for(int i =0; i < (lineArray.length - 1); i++) {
+                        amountOfClubs[i] =lineArray[i].replaceAll("//","");
+                    }
+                    result = lineArray[lineArray.length -1];
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result ;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (type.equals("playerteams")){
+            try {
+                String clubName = params[1];
+                username = params[2];
+                clubNameSpinnerChoice = clubName;
+                URL url = new URL(playerteamchoice_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("GET");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data = URLEncoder.encode("clubName","UTF-8")+"="+URLEncoder.encode(clubName,"UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String line = "";
+                String result = "";
+                while((line = bufferedReader.readLine())!= null) {
+                    String [] lineArray = line.split("//");
+                    amountOfTeams = new String[(lineArray.length - 1)];
+                    for(int i =0; i < (lineArray.length - 1); i++) {
+                        amountOfTeams[i] =lineArray[i].replaceAll("//","");
+                    }
+                    result = lineArray[lineArray.length -1];
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result ;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if(type.equals("addplayertoteam")) {
+            try {
+                String userName = params[1];
+                String clubName = params[2];
+                String teamName = params[3];
+                URL url = new URL(addplayertoteam_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data = URLEncoder.encode("userName","UTF-8")+"="+URLEncoder.encode(userName,"UTF-8")+"&"+
+                        URLEncoder.encode("clubName","UTF-8")+"="+URLEncoder.encode(clubName,"UTF-8")+"&"+
+                        URLEncoder.encode("teamName","UTF-8")+"="+URLEncoder.encode(teamName,"UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result ="";
+                String line = "";
+                while((line = bufferedReader.readLine())!= null) {
+                    result+= line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         return null;
@@ -445,6 +583,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
             Intent k = new Intent(context, PlayerHome.class);
             k.putExtra("username",username);
+            k.putExtra("clubsArray", playerTeams);
             context.startActivity(k);
         } else if (result.equals("Team Created successfully")) {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
@@ -482,6 +621,28 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             j.putExtra("playerList", playerList);
             j.putExtra("username",username);
             context.startActivity(j);
+        }
+        else if (result.equals("Clubs found to join")){
+            Intent y = new Intent(context, PlayerTeamJoin.class);
+            y.putExtra("clubsArray", amountOfClubs);
+            y.putExtra("username", username);
+            context.startActivity(y);
+        }
+        else if (result.equals("Teams found for player")){
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+            Intent e = new Intent(context, PlayerTeamJoin.class);
+            e.putExtra("username",username);
+            e.putExtra("teamsArray", amountOfTeams);
+            e.putExtra("clubsArray", userTeams);
+            e.putExtra("clubName", clubNameSpinnerChoice);
+            context.startActivity(e);
+        }
+        else if (result.equals("Team Joined Successfully")){
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+            Intent e = new Intent(context, PlayerHome.class);
+            e.putExtra("username",username);
+            e.putExtra("teamchoice", teamChoice);
+            context.startActivity(e);
         }
     }
 
