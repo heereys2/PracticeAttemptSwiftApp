@@ -52,6 +52,7 @@
         <activity android:name=".PlayerHome" />
         <activity android:name=".CoachClubSelection" />
         <activity android:name=".CreateTeam" />
+        <activity android:name=".CreateClub"/>
         <activity android:name=".PlayerTeamOverview" />
         <activity android:name=".PlayerDataEntry"/>
         <activity android:name=".CoachTeamChoice">

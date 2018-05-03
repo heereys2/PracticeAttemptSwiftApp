@@ -10,17 +10,18 @@ import android.widget.Spinner;
 
 public class CreateTeam extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    EditText teamName, clubName;
+    EditText teamName;
     String sportChoice;
-    String user_name;
+    String user_name, clubName;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_team);
+        setContentView(R.layout.activity_create_team2);
         user_name = getIntent().getStringExtra("username");
-        Spinner spinner = findViewById(R.id.spinner_Sport);
+        clubName = getIntent().getStringExtra("clubchosen");
+        Spinner spinner = findViewById(R.id.spinner_Sport_Team);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sports, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -41,7 +42,7 @@ public class CreateTeam extends AppCompatActivity implements AdapterView.OnItemS
 
     public void onMakeTeam(View view) {
         String str_teamName = teamName.getText().toString();
-        String str_clubName = clubName.getText().toString();
+        String str_clubName = clubName;
         String str_sport = sportChoice.toString();
         String str_username = user_name.toString();
         String type = "createteam";

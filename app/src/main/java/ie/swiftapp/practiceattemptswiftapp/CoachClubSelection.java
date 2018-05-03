@@ -88,7 +88,7 @@ public class CoachClubSelection extends AppCompatActivity {
         if (!chosenClub.equals("Choose your club")) {
             BackgroundWorker findTeams = new BackgroundWorker(context);
             String type = "coachTeam";
-            findTeams.execute(type, chosenClub);
+            findTeams.execute(type, chosenClub, user_name);
         }
     }
 
