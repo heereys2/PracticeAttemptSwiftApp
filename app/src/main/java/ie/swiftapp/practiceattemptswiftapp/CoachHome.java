@@ -18,7 +18,7 @@ public class CoachHome extends AppCompatActivity implements AdapterView.OnItemSe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coach_home2);
 
-        teamChoice = getIntent().getStringExtra("teamChoice");
+        teamChoice = getIntent().getStringExtra("teamchoice");
         TextView teamName = (TextView) findViewById(R.id.txtTeamName);
         teamName.setText(teamChoice);
         Spinner spinner = findViewById(R.id.spinner_dataEntryResults);
