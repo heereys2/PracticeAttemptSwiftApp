@@ -24,7 +24,7 @@ public class PlayerTeamOverview extends AppCompatActivity implements AdapterView
         spinner.setOnItemSelectedListener(this);
     }
 
-    public void onRecordTime() {
+    public void onRecordTime(View view) {
         Intent p = new Intent(PlayerTeamOverview.this, Stopwatch.class);
         PlayerTeamOverview.this.startActivity(p);
     }
