@@ -26,8 +26,7 @@ public class CreateTeam extends AppCompatActivity implements AdapterView.OnItemS
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        teamName = findViewById(R.id.et_TeamName);
-        clubName = findViewById(R.id.et_Club);
+        teamName = findViewById(R.id.newTeamName);
     }
 
     @Override
