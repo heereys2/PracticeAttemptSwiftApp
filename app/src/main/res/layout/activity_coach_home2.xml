@@ -4,6 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ie.swiftapp.practiceattemptswiftapp.CoachHome">
+    tools:context="ie.swiftapp.practiceattemptswiftapp.CoachHome"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/txtTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team Name"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="25dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upcoming Events"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="136dp"
+        tools:layout_editor_absoluteY="79dp" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="177dp"
+        tools:layout_editor_absoluteY="122dp" />
+
+    <Button
+        android:id="@+id/btnRecTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onRecordTime"
+        android:text="Record Time"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="306dp" />
+
+    <Button
+        android:id="@+id/btnEnterData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onEnterData"
+        android:text="Enter Data"
+        tools:layout_editor_absoluteX="226dp"
+        tools:layout_editor_absoluteY="306dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onViewResults"
+        android:text="View Results"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="516dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View results for"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="143dp"
+        tools:layout_editor_absoluteY="387dp" />
+
+    <Spinner
+        android:id="@+id/spinner_selectPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="181dp"
+        tools:layout_editor_absoluteY="214dp" />
+
+    <Spinner
+        android:id="@+id/spinner_dataEntryResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="181dp"
+        tools:layout_editor_absoluteY="429dp" />
+
+    <TextView
+        android:id="@+id/txtSelectPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Player"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="171dp" />
 
 </android.support.constraint.ConstraintLayout>
