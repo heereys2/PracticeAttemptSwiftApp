@@ -47,12 +47,5 @@
     <string name="coach_overview">Coach Overview</string>
     <string name="my_teams">My Teams</string>
     <string name="click_here_to_create_team">Click Here to Create Team</string>
-    <string name="registerTeamText">Team not listed?</string>
-    <string name="goToRegisterTeam">Register Here</string>
-    <string name="createClubButton">Create Club</string>
-    <string name="onClickCreateTeam">Create Team</string>
-    <string name="teamNameRegister">Team Name</string>
-    <string name="sportSpinnerRegister">TextView</string>
-    <string name="userTeamSubmitChoice">Go to team page</string>
 
 </resources>

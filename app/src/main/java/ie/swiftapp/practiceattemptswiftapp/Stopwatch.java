@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  * Created by steph on 15/03/2018.
  */
@@ -126,6 +129,13 @@ public class Stopwatch extends AppCompatActivity{
         goToStoreTime.putExtra("savedMinutes", storeMinutes);
         String storingDistance = distanceDropdown.getSelectedItem().toString();
         goToStoreTime.putExtra("savedDistance", storingDistance);
+        String completeTime = storeMinutes +":" + storeSeconds + ":" + storeMilli;
+        String type = "playerSaveTime";
+        String date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+
+        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+        backgroundWorker.execute(type, "John", storingDistance, completeTime, date);
+
         startActivity(goToStoreTime);
     }
 }
