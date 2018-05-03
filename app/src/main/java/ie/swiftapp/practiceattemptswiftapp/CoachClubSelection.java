@@ -108,10 +108,9 @@ public class CoachClubSelection extends AppCompatActivity {
     }
 
     public void onClickGoToTeamHome(View view){
-        Intent goToRegisterTeam = new Intent(this, CoachHome.class);
-        goToRegisterTeam.putExtra("username",user_name);
+        String type = "joinTeam";
         String teamChoice = teamNames.getSelectedItem().toString();
-        goToRegisterTeam.putExtra("teamchoice", teamChoice);
-        startActivity(goToRegisterTeam);
+        BackgroundWorker back = new BackgroundWorker(this);
+        back.execute(type,user_name,teamChoice);
     }
 }
