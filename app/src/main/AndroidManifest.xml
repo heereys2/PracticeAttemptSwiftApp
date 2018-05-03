@@ -49,8 +49,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CoachHome" />
         <activity android:name=".PlayerHome" />
-        <activity android:name=".CoachClubSelection"/>
-        <activity android:name=".CreateTeam"></activity>
+        <activity android:name=".CoachClubSelection" />
+        <activity android:name=".CreateTeam" />
+        <activity android:name=".PlayerTeamOverview" />
+        <activity android:name=".PlayerDataEntry"></activity>
     </application>
 
 </manifest>

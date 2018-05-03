@@ -39,6 +39,12 @@
         <item>GAA Hurling</item>
         <item>Rugby</item>
     </string-array>
+    <string-array name="dataentry">
+        <item>Goals scored</item>
+        <item>Assists</item>
+        <item>Tackles</item>
+        <item>Passes</item>
+    </string-array>
     <string name="chooseclubtext">Choose Club</string>
     <string name="submitclubchoice">Submit</string>
     <string name="registerclub">Club not listed?</string>
@@ -47,5 +53,6 @@
     <string name="coach_overview">Coach Overview</string>
     <string name="my_teams">My Teams</string>
     <string name="click_here_to_create_team">Click Here to Create Team</string>
+    <string name="player_home">Player Home</string>
 
 </resources>
