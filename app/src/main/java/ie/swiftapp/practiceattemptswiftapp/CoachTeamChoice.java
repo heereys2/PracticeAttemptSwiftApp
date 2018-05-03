@@ -16,18 +16,20 @@ public class CoachTeamChoice extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coach_team_choice);
+
         user_name = getIntent().getStringExtra("username");
         userTeamArray = getIntent().getStringArrayExtra("clubsArray");
-        userTeamSpinner = findViewById(R.id.userTeamsSpinner);
+        userTeamSpinner = findViewById(R.id.spinCoachTeamList);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, userTeamArray);
         userTeamSpinner.setAdapter(adapter);
 
-    };
+    }
 
     public void onCreateTeam(View view) {
-        Intent p = new Intent(CoachTeamChoice.this, CoachClubSelection.class);
-        p.putExtra("username",user_name);
-        CoachTeamChoice.this.startActivity(p);
+        String type = "allclubs";
+        BackgroundWorker back = new BackgroundWorker(this);
+        back.execute(type,user_name);
+
     }
 
     public void onClickGoToTeamHomeDirect(View view){
@@ -36,5 +38,6 @@ public class CoachTeamChoice extends AppCompatActivity {
         String teamChoice = userTeamSpinner.getSelectedItem().toString();
         goToRegisterTeam.putExtra("teamchoice", teamChoice);
         startActivity(goToRegisterTeam);
+
     }
 }

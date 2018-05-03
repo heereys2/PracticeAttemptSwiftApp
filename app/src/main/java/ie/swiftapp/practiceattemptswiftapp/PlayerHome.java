@@ -16,9 +16,9 @@ public class PlayerHome extends AppCompatActivity {
     }
 
     public void onJoinTeam(View view) {
-        Intent r = new Intent(PlayerHome.this, PlayerClubJoin.class);
-        r.putExtra("username", user_name);
-        PlayerHome.this.startActivity(r);
+//        Intent r = new Intent(PlayerHome.this, PlayerClubJoin.class);
+//        r.putExtra("username", user_name);
+//        PlayerHome.this.startActivity(r);
     }
     public void onStopwatchTest(View view) {
         Intent s = new Intent(PlayerHome.this, PlayerTeamOverview.class);

@@ -54,5 +54,11 @@
     <string name="my_teams">My Teams</string>
     <string name="click_here_to_create_team">Click Here to Create Team</string>
     <string name="player_home">Player Home</string>
-
+    <string name="gotoregisterteam">Register Here</string>
+    <string name="registerTeamText">Team not Listed?</string>
+    <string name="newTeamName">newTeamName</string>
+    <string name="userTeamsSpinner">TextView</string>
+    <string name="createClubButton">Create Club</string>
+    <string name="onClickCreateTeam">Create Team</string>
+    <string name="sportSpinnerRegister">SportSpinner</string>
 </resources>

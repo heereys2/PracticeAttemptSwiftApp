@@ -34,6 +34,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     public String clubNameSpinnerChoice;
     public String[] userTeams;
     public String[] amountOfTeams;
+    public String[] amountOfClubs;
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
@@ -44,6 +45,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         String teams_url = "http://swiftproject.000webhostapp.com/teams.php";
         String savetime_url = "http://swiftproject.000webhostapp.com/savetime.php";
         String saveplayerdata_url = "http://swiftproject.000webhostapp.com/saveplayerdata.php";
+        String allclubs_url = "http://swiftproject.000webhostapp.com/allclubs.php";
         if(type.equals("login")) {
             try {
                 String user_name = params[1];
@@ -307,7 +309,46 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else if (type.equals("allclubs")){
+            try{
+                String user = params[1];
+                username = user;
+                URL url = new URL(allclubs_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("GET");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String line = "";
+                String result = "";
+                while((line = bufferedReader.readLine())!= null) {
+                    String [] lineArray = line.split("//");
+                    amountOfClubs = new String[(lineArray.length - 1)];
+                    for(int i =0; i < (lineArray.length - 1); i++) {
+                        amountOfClubs[i] =lineArray[i].replaceAll("//","");
+                    }
+                    result = lineArray[lineArray.length -1];
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result ;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
+
         return null;
     }
 
@@ -357,6 +398,13 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         }
         else if (result.equals("Data saved successfully")){
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        }
+        else if (result.equals("clubs found")){
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+            Intent coachTeamChoice = new Intent(context, CoachClubSelection.class);
+            coachTeamChoice.putExtra("clubsArray", amountOfClubs);
+            coachTeamChoice.putExtra("username", username);
+            context.startActivity(coachTeamChoice);
         }
     }
 
