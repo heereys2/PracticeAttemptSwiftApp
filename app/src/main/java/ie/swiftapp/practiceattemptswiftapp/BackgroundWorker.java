@@ -30,7 +30,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     BackgroundWorker (Context ctx) {
         context = ctx;
     }
-    public String username;
+    public String username, teamChoice;
     public String[] playerList;
     public String clubNameSpinnerChoice;
     public String[] userTeams;
@@ -106,6 +106,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         } else if(type.equals("playerlist")) {
             try {
                 String teamName = params[1];
+                teamChoice = teamName;
                 username = params[2];
                 URL url = new URL(selectplayers_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -125,7 +126,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 String line = "";
                 while((line = bufferedReader.readLine())!= null) {
                     String [] lineArray = line.split("//");
-                    playerList = new String[lineArray.length];
+                    playerList = new String[lineArray.length-1];
                     for(int i =0; i < lineArray.length -1; i++) {
                         playerList[i] =lineArray[i].replaceAll("//","");
                     }
@@ -477,6 +478,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         }
         else if (result.equals("Players found")) {
             Intent j = new Intent(context, CoachHome.class);
+            j.putExtra("teamChoice", teamChoice);
             j.putExtra("playerList", playerList);
             j.putExtra("username",username);
             context.startActivity(j);
