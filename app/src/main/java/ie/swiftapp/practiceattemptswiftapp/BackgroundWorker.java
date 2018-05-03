@@ -441,65 +441,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 e.printStackTrace();
             }
 
-        } else if (type.equals("joinTeam")){
-            try {
-                String teamName = params[1];
-                String username = params[4];
-                URL url = new URL(joinTeam_url);
-                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.setDoOutput(true);
-                httpURLConnection.setDoInput(true);
-                OutputStream outputStream = httpURLConnection.getOutputStream();
-                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String post_data = URLEncoder.encode("teamName","UTF-8")+"="+URLEncoder.encode(teamName,"UTF-8") + "&" +
-                        URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8");
-                bufferedWriter.write(post_data);
-                bufferedWriter.flush();
-                bufferedWriter.close();
-                outputStream.close();
-                InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
-                String result ="";
-                String line = "";
-                while((line = bufferedReader.readLine())!= null) {
-                    result+= line;
-                }
-                bufferedReader.close();
-                inputStream.close();
-                httpURLConnection.disconnect();
-                URL url2 = new URL(club_url);
-                HttpURLConnection httpURLConnection2 = (HttpURLConnection)url2.openConnection();
-                httpURLConnection2.setRequestMethod("GET");
-                httpURLConnection2.setDoOutput(true);
-                httpURLConnection2.setDoInput(true);
-                OutputStream outputStream2 = httpURLConnection2.getOutputStream();
-                BufferedWriter bufferedWriter2 = new BufferedWriter(new OutputStreamWriter(outputStream2, "UTF-8"));
-                String post_data2 = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8");
-                bufferedWriter2.write(post_data2);
-                bufferedWriter2.flush();
-                bufferedWriter2.close();
-                outputStream.close();
-                InputStream inputStream2 = httpURLConnection2.getInputStream();
-                BufferedReader bufferedReader2 = new BufferedReader(new InputStreamReader(inputStream2,"iso-8859-1"));
-                String line2 = "";
-                while((line2 = bufferedReader2.readLine())!= null) {
-                    String [] lineArray = line2.split("//");
-                    userTeams = new String[lineArray.length];
-                    for(int i =0; i < lineArray.length; i++) {
-                        userTeams[i] =lineArray[i].replaceAll("//","");
-                    }
-                }
-                bufferedReader2.close();
-                inputStream2.close();
-                httpURLConnection2.disconnect();
-                return result;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        } 
 
         return null;
     }
