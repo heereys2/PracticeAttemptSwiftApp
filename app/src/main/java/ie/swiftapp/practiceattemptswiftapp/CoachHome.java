@@ -11,13 +11,15 @@ import android.widget.TextView;
 
 public class CoachHome extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    String dataChoiceResult, teamChoice;
-
+    String dataChoiceResult, teamChoice, username;
+    String playerList[];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coach_home2);
 
+        username = getIntent().getStringExtra("username");
+        playerList = getIntent().getStringArrayExtra("playerList");
         teamChoice = getIntent().getStringExtra("teamChoice");
         TextView teamName = (TextView) findViewById(R.id.txtTeamName);
         teamName.setText(teamChoice);
@@ -26,6 +28,11 @@ public class CoachHome extends AppCompatActivity implements AdapterView.OnItemSe
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
+        Spinner spinner2 = findViewById(R.id.spinner_selectPlayer);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, playerList);
+        spinner2.setAdapter(adapter2);
+        spinner2.setOnItemSelectedListener(this);
     }
 
     public void onRecordTime() {

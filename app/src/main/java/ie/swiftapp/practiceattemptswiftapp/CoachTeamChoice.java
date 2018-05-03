@@ -32,12 +32,11 @@ public class CoachTeamChoice extends AppCompatActivity {
 
     }
 
-    public void onClickGoToTeamHomeDirect(View view){
-        Intent goToRegisterTeam = new Intent(this, CoachHome.class);
-        goToRegisterTeam.putExtra("username",user_name);
+    public void onClickGoToTeamHomeDirect(View view){ ;
         String teamChoice = userTeamSpinner.getSelectedItem().toString();
-        goToRegisterTeam.putExtra("teamchoice", teamChoice);
-        startActivity(goToRegisterTeam);
+        String type = "playerlist";
+        BackgroundWorker back = new BackgroundWorker(this);
+        back.execute(type, teamChoice, user_name);
 
     }
 }
