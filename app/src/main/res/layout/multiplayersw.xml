@@ -1,8 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    tools:layout_editor_absoluteY="81dp">
 
+    <Spinner
+        android:id="@+id/multiDistanceDropDown"
+        android:layout_width="149dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="73dp"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/multiDistanceTextBox"
+        app:layout_constraintTop_toBottomOf="@+id/playerDropdown" />
+
+    <TextView
+        android:id="@+id/multiDistanceTextBox"
+        android:layout_width="128dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="73dp"
+        android:gravity="center"
+        android:text="@string/distanceText"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playerTextBox" />
+
+    <Spinner
+        android:id="@+id/playerDropdown"
+        android:layout_width="149dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginTop="54dp"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/playerTextBox"
+        app:layout_constraintTop_toBottomOf="@+id/multiSWTextBox" />
+
+    <TextView
+        android:id="@+id/playerTextBox"
+        android:layout_width="167dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="54dp"
+        android:gravity="center"
+        android:text="@string/no_of_players"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/multiSWTextBox" />
+
+    <TextView
+        android:id="@+id/multiSWTextBox"
+        android:layout_width="315dp"
+        android:layout_height="88dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="53dp"
+        android:text="@string/multiSWTextBox"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/goToMultiStopwatch"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="123dp"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="96dp"
+        android:onClick="onClickGoToMultiStopwatch"
+        android:text="@string/goToMultiStopwatch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/multiDistanceDropDown" />
 </android.support.constraint.ConstraintLayout>

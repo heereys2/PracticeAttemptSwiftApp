@@ -28,6 +28,7 @@ public class Stopwatch extends AppCompatActivity{
     String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //start up function that opens the app
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stopwatch);
         username = getIntent().getStringExtra("username");
@@ -36,11 +37,13 @@ public class Stopwatch extends AppCompatActivity{
         stopButton = findViewById(R.id.stop_Button);
         resetButton = findViewById(R.id.reset_Button);
         saveButton = findViewById(R.id.save_Button);
+        //setting buttons for the stopwatch visible and invisible
         startButton.setVisibility(View.VISIBLE);
         stopButton.setVisibility(View.INVISIBLE);
         resetButton.setVisibility(View.VISIBLE);
         saveButton.setVisibility(View.INVISIBLE);
     }
+    //declaring variables to make the stopwatch work
     long MillisecondTime,StartTime,TimeBuff,UpdateTime = 0L;
     int Seconds, Minutes, MilliSeconds ;
     private boolean running, reset;
@@ -49,19 +52,20 @@ public class Stopwatch extends AppCompatActivity{
         setContentView(R.layout.activity_stopwatch);
     }
 
-//    startButton.OnClickListener(View view);
-
-
+    //this function starts the time on the stopwatch when the button is pressed
     public void onClickStart(View view) {
         running = true;
         reset = false;
         StartTime = SystemClock.uptimeMillis();
         stopButton.setVisibility(View.VISIBLE);
         startButton.setVisibility(View.INVISIBLE);
+        //changing the button to resume while the timer is not 0
         startButton.setText("Resume");
         saveButton.setVisibility(View.INVISIBLE);
 
     }
+
+    //this function stops the time on the stopwatch when the button is pressed
     public void onClickStop(View view){
         running = false;
         TimeBuff += MillisecondTime;
@@ -70,6 +74,7 @@ public class Stopwatch extends AppCompatActivity{
         saveButton.setVisibility(View.VISIBLE);
     }
 
+    //this function both stops the stopwatch but also resets the timer.
     public void onClickReset(View view){
         running = false;
         reset = true;
@@ -86,12 +91,14 @@ public class Stopwatch extends AppCompatActivity{
         saveButton.setVisibility(View.INVISIBLE);
     }
 
+    //this is the stopwatch function, where the time is processed and then displayed back to the user.
     public void runTimer() {
         final TextView timeView = findViewById(R.id.stopwatch_Timer);
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
+                //when running is true it continues to run the stopwatch
                 if (running) {
                     MillisecondTime = SystemClock.uptimeMillis() - StartTime;
 
@@ -109,6 +116,7 @@ public class Stopwatch extends AppCompatActivity{
                     timeView.setText(time);
 
                 }
+                //resetting the time on the stopwatch
                 if (reset) {
                     String timeReset = String.format("%02d:%02d:%03d", Minutes, Seconds, MilliSeconds);
                     timeView.setText(timeReset);
@@ -116,11 +124,13 @@ public class Stopwatch extends AppCompatActivity{
                 handler.postDelayed(this, 0);
             }
         });
+        //array that takes in the various values for distance and displays them to the user in a dropdown menu
         distanceDropdown = findViewById(R.id.distanceDropDown);
         String[] distanceTypes = new String[]{"20 meters", "50 Meters", "100 meters", "200 meters", "400 meters", "1 km"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, distanceTypes);
         distanceDropdown.setAdapter(adapter);
     }
+    //when this button is pressed, it takes the time, the distance and the name of the user, so that it can be stored on the database,it then brings the user to another page to show them what time and distance has been saved.
     public void onClickSave(View view){
         Intent goToStoreTime = new Intent(this, storeTimeActivity.class);
         String storeMilli = Integer.toString(MilliSeconds);

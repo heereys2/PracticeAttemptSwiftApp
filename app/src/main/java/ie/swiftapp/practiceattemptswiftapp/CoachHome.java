@@ -21,7 +21,7 @@ public class CoachHome extends AppCompatActivity implements AdapterView.OnItemSe
         username = getIntent().getStringExtra("username");
         playerList = getIntent().getStringArrayExtra("playerList");
         teamChoice = getIntent().getStringExtra("teamChoice");
-        TextView teamName = (TextView) findViewById(R.id.txtTeamName);
+        TextView teamName = findViewById(R.id.txtTeamName);
         teamName.setText(teamChoice);
         Spinner spinner = findViewById(R.id.spinner_dataEntryResults);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.dataentry, android.R.layout.simple_spinner_item);
@@ -35,8 +35,9 @@ public class CoachHome extends AppCompatActivity implements AdapterView.OnItemSe
         spinner2.setOnItemSelectedListener(this);
     }
 
-    public void onRecordTime() {
-        Intent p = new Intent(CoachHome.this, Stopwatch.class);
+    public void onRecordTime(View view) {
+        Intent p = new Intent(CoachHome.this, CoachStopwatch.class);
+        p.putExtra("playerNames", playerList);
         CoachHome.this.startActivity(p);
     }
 
