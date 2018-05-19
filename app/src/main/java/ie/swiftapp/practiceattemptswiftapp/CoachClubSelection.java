@@ -11,8 +11,10 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+//this class give a coach the option to either make a new club, new team in a club, or join an existing team/club
 public class CoachClubSelection extends AppCompatActivity {
 
+    //declaring some of the variables that we will have to read in from other pages or send to other pages.
     public Spinner clubNames;
     public Spinner teamNames;
     public boolean onClickSpinner = false;
@@ -22,6 +24,7 @@ public class CoachClubSelection extends AppCompatActivity {
     public String userType = "Coach";
     public Button submitChoice;
     @Override
+    //creates the UI and gives values to some of the variables.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
@@ -45,12 +48,14 @@ public class CoachClubSelection extends AppCompatActivity {
         goToTeamRegisterButton.setVisibility(View.INVISIBLE);
         submitChoice.setVisibility(View.INVISIBLE);
 
+        //if else statement where if clubsArray isn't null then show the dropdown menu.
         if(clubsArray == null){
 
         } else {
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, clubsArray);
             clubNames.setAdapter(adapter);
         }
+        //if else statement where if teamsArray isn't null then show the dropdown menu.
         if (teamsArray == null){
 
         } else {
@@ -66,6 +71,7 @@ public class CoachClubSelection extends AppCompatActivity {
             goToClubRegisterButton.setVisibility(View.INVISIBLE);
             submitChoice.setVisibility(View.VISIBLE);
         }
+        //this waits for someone to select a value from the clubsArray dropdown then performs an action.
         clubNames.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -82,9 +88,10 @@ public class CoachClubSelection extends AppCompatActivity {
         onClickSpinner = true;
     }
 
-
+    //This function is to take the club that was selected, then run it through a query and then show the teams available
     public void OnClickShowTeams(){
         String chosenClub = clubNames.getSelectedItem().toString();
+        //makes sure that it cant be "Choose your Club" that is selected.
         if (!chosenClub.equals("Choose your club")) {
             BackgroundWorker findTeams = new BackgroundWorker(context);
             String type = "coachTeam";
@@ -92,13 +99,14 @@ public class CoachClubSelection extends AppCompatActivity {
         }
     }
 
+    //when a user clicks this it brings them to create a new club
     public void OnClickRegisterClub(View view){
         Intent goToRegisterClub = new Intent(this, CreateClub.class);
         goToRegisterClub.putExtra("username",user_name);
         goToRegisterClub.putExtra("userType", userType);
         startActivity(goToRegisterClub);
     }
-
+    //when a user clicks this it takes the club that was selected an then allows them to create a team inside this club
     public void OnClickRegisterTeam(View view){
         Intent goToRegisterTeam = new Intent(this, CreateTeam.class);
         goToRegisterTeam.putExtra("username",user_name);
@@ -107,6 +115,7 @@ public class CoachClubSelection extends AppCompatActivity {
         startActivity(goToRegisterTeam);
     }
 
+    //this can only be clicked once a club and team has been selected, it brings the coach to the team homepage.
     public void onClickGoToTeamHome(View view){
         String type = "joinTeam";
         String teamChoice = teamNames.getSelectedItem().toString();

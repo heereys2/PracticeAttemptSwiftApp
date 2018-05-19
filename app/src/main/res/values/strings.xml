@@ -62,4 +62,11 @@
     <string name="onClickCreateTeam">Create Team</string>
     <string name="sportSpinnerRegister">SportSpinner</string>
     <string name="goToTeamPage">Go To Team Page</string>
+    <string name="no_of_players">No of players</string>
+    <string name="multiSWTextBox">Choose the no. of players and distance you wish to record</string>
+    <string name="goToMultiStopwatch">Go To Stopwatch</string>
+    <string name="stop_multiSW">Stop</string>
+    <string name="start_the_timer">Start the Timer</string>
+    <string name="cancel_the_timer">Cancel The timer</string>
+    <string name="restart_all">Restart all</string>
 </resources>
