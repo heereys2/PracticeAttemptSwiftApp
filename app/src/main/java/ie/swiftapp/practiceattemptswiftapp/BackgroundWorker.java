@@ -57,9 +57,11 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         String addplayertoteam_url = "http://swiftproject.000webhostapp.com/addplayertoteam.php";
         if(type.equals("login")) {
             try {
+                //Store values passed from login activirt
                 String user_name = params[1];
                 username = user_name;
                 String password = params[2];
+                //Connect to the PHP script, address stored in variable above
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -67,6 +69,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                //The POST data being sent for the PHP file to user
                 String post_data = URLEncoder.encode("user_name","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"+URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -76,6 +79,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
                 String result ="";
                 String line = "";
+                //Store the outputted message from th PHP script (success/fail)
                 while((line = bufferedReader.readLine())!= null) {
                     result+= line;
                 }
@@ -173,17 +177,21 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             }
         } else if(type.equals("register")) {
             try {
+                //Store the values passed from the Register class in strings
                 String email = params[1];
                 String username = params[2];
                 String password = params[3];
                 String userType = params[4];
+                //Create a url with the value stored in the variable register_url.
                 URL url = new URL(register_url);
+                //Open a HTTP connection with the URL. This gives it access to the PHP file stored by the web server.
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                //POST the stored Strings to the PHP file
                 String post_data = URLEncoder.encode("email","UTF-8")+"="+URLEncoder.encode(email,"UTF-8")+"&"+
                         URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+
                         URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8")+"&"+
@@ -196,6 +204,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
                 String result ="";
                 String line = "";
+                //Store the resulting message from the PHP file, alerting if the SQL query was a success or not.
                 while((line = bufferedReader.readLine())!= null) {
                     result+= line;
                 }
@@ -359,17 +368,21 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             }
         } else if(type.equals("playerentereddata")) {
             try {
+                //Store the 4 values passed in the PlayerEnterData class
                 String username = params[1];
                 String eventtype = params[2];
                 String value = params[3];
                 String date = params[4];
+                //Create a new URL with the value of the saveplayerdata_url created earlier
                 URL url = new URL(saveplayerdata_url);
+                //connect to the file
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                //POST the 4 String values to the PHP file
                 String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+
                         URLEncoder.encode("eventtype","UTF-8")+"="+URLEncoder.encode(eventtype,"UTF-8")+"&"+
                         URLEncoder.encode("value","UTF-8")+"="+URLEncoder.encode(value,"UTF-8")+"&"+
@@ -382,9 +395,11 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
                 String result ="";
                 String line = "";
+                //Store the result from the PHP file
                 while((line = bufferedReader.readLine())!= null) {
                     result+= line;
                 }
+                //close connection
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
@@ -653,9 +668,9 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     }
 
     @Override
+    //Execute the following method after connection closes
     protected void onPostExecute(String result) {
-        //alertDialog.setMessage(result);
-        //alertDialog.show();
+        //If successful, redirect user back to login page and display success message. If not, alert the user with fail message.
         if (result.equals("Registration Successful. Please Login")) {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
             Intent i = new Intent(context, MainActivity.class);
@@ -741,3 +756,4 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         super.onProgressUpdate(values);
     }
 }
+

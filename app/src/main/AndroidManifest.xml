@@ -28,8 +28,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BackgroundWorker"
-            android:label="@string/title_activity_background_worker"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_background_worker" />
         <activity
             android:name=".Register"
             android:label="@string/title_activity_register"
