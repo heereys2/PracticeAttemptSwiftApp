@@ -56,7 +56,7 @@
     <string name="player_home">Player Home</string>
     <string name="gotoregisterteam">Register Here</string>
     <string name="registerTeamText">Team not Listed?</string>
-    <string name="newTeamName">newTeamName</string>
+    <string name="newTeamName">New Team Name</string>
     <string name="userTeamsSpinner">TextView</string>
     <string name="createClubButton">Create Club</string>
     <string name="onClickCreateTeam">Create Team</string>

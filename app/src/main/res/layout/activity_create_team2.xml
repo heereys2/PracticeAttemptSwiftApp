@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/whitegradiant"
     tools:context=".CreateClub"
     tools:layout_editor_absoluteY="81dp">
 
@@ -11,34 +12,50 @@
         android:id="@+id/newTeamName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginBottom="19dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
         android:ems="10"
         android:hint="@string/newTeamName"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/spinner_Sport_Team"
+        app:layout_constraintStart_toStartOf="@+id/imageView13"
+        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
 
     <Spinner
         android:id="@+id/spinner_Sport_Team"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_marginBottom="75dp"
         android:text="@string/sportSpinnerRegister"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_MakeTeam"
+        app:layout_constraintEnd_toEndOf="@+id/newTeamName"
+        app:layout_constraintStart_toStartOf="@+id/newTeamName"
         app:layout_constraintTop_toBottomOf="@+id/newTeamName" />
 
     <Button
         android:id="@+id/btn_MakeTeam"
+        style="@style/MyButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="89dp"
+        android:layout_marginBottom="254dp"
         android:onClick="onMakeTeam"
         android:text="@string/onClickCreateTeam"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_Sport_Team"
         tools:ignore="OnClick" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="239dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/newTeamName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/swiftfinallogo" />
 
 </android.support.constraint.ConstraintLayout>

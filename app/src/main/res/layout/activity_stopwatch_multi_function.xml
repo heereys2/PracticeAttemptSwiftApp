@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/whitegradiant">
 
     <TextView
         android:id="@+id/stopwatch_Timer2"
@@ -30,18 +31,19 @@
 
     <Button
         android:id="@+id/player1MultiSW"
+        style="@style/MyButtonStyle"
         android:layout_width="109dp"
         android:layout_height="39dp"
         android:layout_marginEnd="21dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="21dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="117dp"
-        android:text="@string/stop_multiSW"
         android:onClick="onClickStopMulti1"
+        android:text="@string/stop_multiSW"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/player1MultiSWChoice"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="28dp"
-        android:layout_marginRight="21dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/player2MultiSWChoice"
@@ -55,17 +57,18 @@
 
     <Button
         android:id="@+id/player2MultiSW"
+        style="@style/MyButtonStyle"
         android:layout_width="109dp"
         android:layout_height="39dp"
         android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="23dp"
-        android:text="@string/stop_multiSW"
         android:onClick="onClickStopMulti2"
+        android:text="@string/stop_multiSW"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/player2MultiSWChoice"
-        app:layout_constraintTop_toBottomOf="@+id/player1MultiSW"
-        android:layout_marginRight="21dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/player1MultiSW" />
 
     <Spinner
         android:id="@+id/player3MultiSWChoice"
@@ -79,13 +82,14 @@
 
     <Button
         android:id="@+id/player3MultiSW"
+        style="@style/MyButtonStyle"
         android:layout_width="109dp"
         android:layout_height="39dp"
         android:layout_marginEnd="21dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="23dp"
-        android:text="@string/stop_multiSW"
         android:onClick="onClickStopMulti3"
+        android:text="@string/stop_multiSW"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/player3MultiSWChoice"
         app:layout_constraintTop_toBottomOf="@+id/player2MultiSW" />
@@ -102,13 +106,14 @@
 
     <Button
         android:id="@+id/player4MultiSW"
+        style="@style/MyButtonStyle"
         android:layout_width="109dp"
         android:layout_height="39dp"
         android:layout_marginEnd="21dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="23dp"
-        android:text="@string/stop_multiSW"
         android:onClick="onClickStopMulti4"
+        android:text="@string/stop_multiSW"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/player4MultiSWChoice"
         app:layout_constraintTop_toBottomOf="@+id/player3MultiSW" />
@@ -125,13 +130,14 @@
 
     <Button
         android:id="@+id/player5MultiSW"
+        style="@style/MyButtonStyle"
         android:layout_width="109dp"
         android:layout_height="39dp"
         android:layout_marginEnd="21dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="23dp"
-        android:text="@string/stop_multiSW"
         android:onClick="onClickStopMulti5"
+        android:text="@string/stop_multiSW"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/player5MultiSWChoice"
         app:layout_constraintTop_toBottomOf="@+id/player4MultiSW" />
@@ -148,13 +154,14 @@
 
     <Button
         android:id="@+id/player6MultiSW"
+        style="@style/MyButtonStyle"
         android:layout_width="109dp"
         android:layout_height="39dp"
         android:layout_marginEnd="21dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="23dp"
-        android:text="@string/stop_multiSW"
         android:onClick="onClickStopMulti6"
+        android:text="@string/stop_multiSW"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/player6MultiSWChoice"
         app:layout_constraintTop_toBottomOf="@+id/player5MultiSW" />
@@ -174,6 +181,7 @@
 
     <Button
         android:id="@+id/resetTimerMulti"
+        style="@style/MyButtonStyle"
         android:layout_width="171dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="120dp"
@@ -187,68 +195,71 @@
 
     <Button
         android:id="@+id/restartAll"
+        style="@style/MyButtonStyle"
         android:layout_width="171dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
-        android:text="@string/restart_all"
         android:onClick="onClickResetMulti"
+        android:text="@string/restart_all"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/player6MultiSWChoice" />
 
     <Button
         android:id="@+id/save_Button_Multi"
+        style="@style/MyButtonStyle"
         android:layout_width="171dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="40dp"
-        android:text="@string/save_results"
         android:onClick="onClickSaveMulti"
+        android:text="@string/save_results"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/player6MultiSWChoice" />
 
     <TextView
-            android:id="@+id/player1NameText"
-            android:layout_width="244dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="116dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/player1NameText"
+        android:layout_width="244dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="116dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/player2NameText"
-            android:layout_width="244dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="23dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/player1MultiSWChoice" />
-        <TextView
-            android:id="@+id/player3NameText"
-            android:layout_width="244dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="24dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/player2NameText" />
+    <TextView
+        android:id="@+id/player2NameText"
+        android:layout_width="244dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="23dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player1MultiSWChoice" />
 
-        <TextView
-            android:id="@+id/player4NameText"
-            android:layout_width="244dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="23dp"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/player3NameText" />
+    <TextView
+        android:id="@+id/player3NameText"
+        android:layout_width="244dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="24dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player2NameText" />
+
+    <TextView
+        android:id="@+id/player4NameText"
+        android:layout_width="244dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="23dp"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player3NameText" />
 
     <TextView
         android:id="@+id/player5NameText"
@@ -260,16 +271,17 @@
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/player2NameText" />
+
     <TextView
-            android:id="@+id/player6NameText"
-            android:layout_width="244dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="23dp"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/player5MultiSWChoice"
+        android:id="@+id/player6NameText"
+        android:layout_width="244dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="23dp"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player5MultiSWChoice"
 
         />
 </android.support.constraint.ConstraintLayout>
