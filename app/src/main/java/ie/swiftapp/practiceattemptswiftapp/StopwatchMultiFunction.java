@@ -1,5 +1,6 @@
 package ie.swiftapp.practiceattemptswiftapp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -15,7 +16,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class StopwatchMultiFunction extends AppCompatActivity {
+
+public class StopwatchMultiFunction extends AppCompatActivity  {
 
     private Button playerButton1;
     private Button playerButton2;
@@ -31,9 +33,20 @@ public class StopwatchMultiFunction extends AppCompatActivity {
     private String[] playerNames;
     private String distance;
     private int playerAmount;
+    private TextView playerString;
+    Context context;
+    private int playerAmt;
     private String chosenPlayer;
+    private String [] playerResultList;
+    private String [] timeResultList;
+    private int resultCounter = 0;
+    private boolean onClickSpinner = false;
+    long MillisecondTime,StartTime,TimeBuff,UpdateTime = 0L;
+    int Seconds, Minutes, MilliSeconds ;
+    private boolean running, reset;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stopwatch_multi_function);
         runTimer();
@@ -42,13 +55,15 @@ public class StopwatchMultiFunction extends AppCompatActivity {
         String playerqty = getIntent().getStringExtra("playerChoice");
         playerNames = getIntent().getStringArrayExtra("playerList");
         playerAmount = Integer.parseInt(playerqty);
+        playerAmt = 1;
+
         choosingPlayers(1,"none");
 
         playerSpinner.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(onClickSpinner) {
-                    OnClickShowTeams();
+                    OnClickSelectPlayerName();
                 }
             }
 
@@ -57,12 +72,111 @@ public class StopwatchMultiFunction extends AppCompatActivity {
 
             }
         });
+        onClickSpinner = true;
     }
 
-    public void choosingPlayers(int playerAmt,String playerChosen){
-        if(playerAmt == playerAmount){
+    public void OnClickSelectPlayerName(){
+        String chosenPlayer = playerSpinner.getSelectedItem().toString();
+        //makes sure that it cant be "Choose your Club" that is selected.
+        if (!chosenPlayer.equals("Select Player")) {
+            String savedName = chosenPlayer;
+            setUpPlayerString(playerAmt, savedName);
+            playerSpinner.setVisibility(View.INVISIBLE);
+            if (playerAmount >= playerAmt){
+                choosingPlayers(playerAmt + 1, chosenPlayer);
+            } else {
+                setupButtons();
+            }
+            playerAmt++;
+        }
 
-        } else if (playerAmt == 1) {
+    }
+
+    public void setupButtons(){
+        startButton.setVisibility(View.VISIBLE);
+    }
+
+    public void onClickStartMulti(){
+        running =true;
+        reset = false;
+        resetButton.setVisibility(View.VISIBLE);
+        StartTime = SystemClock.uptimeMillis();
+
+    }
+
+    public void onClickResetMulti(){
+        running = false;
+        reset = true;
+        MillisecondTime = 0L ;
+        StartTime = 0L ;
+        TimeBuff = 0L ;
+        UpdateTime = 0L ;
+        Seconds = 0 ;
+        Minutes = 0 ;
+        MilliSeconds = 0;
+    }
+
+    public void onClickStopMulti1(){
+        TextView text = findViewById(R.id.player1NameText);
+        playerResultList[resultCounter] = text.toString() ;
+        timeResultList[resultCounter] = numberString(Seconds,Minutes,MilliSeconds);
+        timerChecker();
+
+    }
+    public void onClickStopMulti2(){
+        TextView text = findViewById(R.id.player2NameText);
+        playerResultList[resultCounter] = text.toString() ;
+        timeResultList[resultCounter] = numberString(Seconds,Minutes,MilliSeconds);
+        timerChecker();
+    }
+    public void onClickStopMulti3(){
+        TextView text = findViewById(R.id.player3NameText);
+        playerResultList[resultCounter] = text.toString() ;
+        timeResultList[resultCounter] = numberString(Seconds,Minutes,MilliSeconds);
+        timerChecker();
+    }
+    public void onClickStopMulti4(){
+        TextView text = findViewById(R.id.player4NameText);
+        playerResultList[resultCounter] = text.toString() ;
+        timeResultList[resultCounter] = numberString(Seconds,Minutes,MilliSeconds);
+        timerChecker();
+    }
+    public void onClickStopMulti5(){
+        TextView text = findViewById(R.id.player5NameText);
+        playerResultList[resultCounter] = text.toString() ;
+        timeResultList[resultCounter] = numberString(Seconds,Minutes,MilliSeconds);
+        timerChecker();
+    }
+    public void onClickStopMulti6(){
+        TextView text = findViewById(R.id.player6NameText);
+        playerResultList[resultCounter] = text.toString() ;
+        timeResultList[resultCounter] = numberString(Seconds,Minutes,MilliSeconds);
+        timerChecker();
+    }
+
+    public void timerChecker(){
+        resultCounter++;
+        if (resultCounter == playerAmt){
+            resetButton.setVisibility(View.VISIBLE);
+            startButton.setVisibility(View.INVISIBLE);
+            saveButton.setVisibility(View.VISIBLE);
+            running = false;
+        }
+    }
+    public String numberString(int seconds, int minutes, int milli){
+        String time;
+        if (seconds ==0 && minutes == 0){
+            time = milli + " Milliseconds";
+        } else if (minutes == 0){
+            time = seconds + "." + milli + " Seconds";
+        } else {
+            time = minutes + " minute " + seconds + "." + milli + " Seconds";
+        }
+        return time;
+    }
+    public void choosingPlayers(int playerAmt,String playerChosen){
+
+        if (playerAmt == 1) {
             setUpPlayerArray(playerAmt, playerNames);
         } else {
             String [] newPlayerList;
@@ -70,13 +184,11 @@ public class StopwatchMultiFunction extends AppCompatActivity {
             list.remove(playerChosen);
             newPlayerList = list.toArray(new String[0]);
             setUpPlayerArray(playerAmt, newPlayerList);
+
         }
 
     }
 
-    long MillisecondTime,StartTime,TimeBuff,UpdateTime = 0L;
-    int Seconds, Minutes, MilliSeconds ;
-    private boolean running, reset;
 
 
     public void setUpPlayers() {
@@ -87,7 +199,7 @@ public class StopwatchMultiFunction extends AppCompatActivity {
         playerButton5 = findViewById(R.id.player5MultiSW);
         playerButton6 = findViewById(R.id.player6MultiSW);
         restartButton = findViewById(R.id.restartAll);
-        saveButton = findViewById(R.id.save_Button);
+        saveButton = findViewById(R.id.save_Button_Multi);
         resetButton = findViewById(R.id.resetTimer);
         startButton = findViewById(R.id.start_Button);
         playerButton2.setVisibility(View.INVISIBLE);
@@ -105,18 +217,46 @@ public class StopwatchMultiFunction extends AppCompatActivity {
             playerSpinner = findViewById(R.id.player1MultiSWChoice);
         } else if (playerAmt == 2){
             playerSpinner = findViewById(R.id.player2MultiSWChoice);
+            playerSpinner.setVisibility(View.VISIBLE);
         } else if (playerAmt == 3){
             playerSpinner = findViewById(R.id.player3MultiSWChoice);
+            playerSpinner.setVisibility(View.VISIBLE);
         } else if (playerAmt == 4){
             playerSpinner = findViewById(R.id.player4MultiSWChoice);
+            playerSpinner.setVisibility(View.VISIBLE);
         } else if (playerAmt == 5){
             playerSpinner = findViewById(R.id.player5MultiSWChoice);
+            playerSpinner.setVisibility(View.VISIBLE);
         } else if (playerAmt == 6){
             playerSpinner = findViewById(R.id.player6MultiSWChoice);
+            playerSpinner.setVisibility(View.VISIBLE);
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, playerAvail);
         playerSpinner.setAdapter(adapter);
     }
+
+    public void setUpPlayerString(int playerAmt, String playerName){
+        if (playerAmt == 1){
+            playerString = findViewById(R.id.player1NameText);
+            playerButton2.setVisibility(View.VISIBLE);
+        } else if (playerAmt == 2){
+            playerString = findViewById(R.id.player2NameText);
+            playerButton3.setVisibility(View.VISIBLE);
+        } else if (playerAmt == 3){
+            playerString = findViewById(R.id.player3NameText);
+            playerButton4.setVisibility(View.VISIBLE);
+        } else if (playerAmt == 4){
+            playerString = findViewById(R.id.player4NameText);
+            playerButton5.setVisibility(View.VISIBLE);
+        } else if (playerAmt == 5){
+            playerString = findViewById(R.id.player5NameText);
+            playerButton6.setVisibility(View.VISIBLE);
+        } else if (playerAmt == 6){
+            playerString = findViewById(R.id.player6NameText);
+        }
+        playerString.setText(playerName);
+    }
+
 
 
     //this is the stopwatch function, where the time is processed and then displayed back to the user.

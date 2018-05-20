@@ -35,7 +35,7 @@ public class multiPlayerSW extends AppCompatActivity {
     }
 
     public void onClickGoToMultiStopwatch(View v){
-        Intent goToStoreTime = new Intent(this, storeTimeActivity.class);
+        Intent goToStoreTime = new Intent(this, StopwatchMultiFunction.class);
         goToStoreTime.putExtra("playerList",playerList);
         String storingDistance = distanceDropdown.getSelectedItem().toString();
         String storingNoPlayers = playerDropdown.getSelectedItem().toString();

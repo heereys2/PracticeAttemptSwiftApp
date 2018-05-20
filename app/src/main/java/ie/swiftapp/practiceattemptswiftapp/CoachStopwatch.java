@@ -26,7 +26,7 @@ public class CoachStopwatch extends AppCompatActivity {
 
     public void onClickMulti(View view){
         Intent goToClickMulti = new Intent(this, multiPlayerSW.class);
-        goToClickMulti.putExtra("playerList", playerList);
+        goToClickMulti.putExtra("playerNames", playerList);
         startActivity(goToClickMulti);
     }
 
