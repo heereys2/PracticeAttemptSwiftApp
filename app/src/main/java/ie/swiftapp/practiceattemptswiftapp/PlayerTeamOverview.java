@@ -38,18 +38,21 @@ public class PlayerTeamOverview extends AppCompatActivity implements AdapterView
 
     public void onEnterData(View view) {
         Intent q = new Intent(PlayerTeamOverview.this, PlayerDataEntry.class);
+        teamChoice = getIntent().getStringExtra("teamChoice");
         q.putExtra("username", username);
+        q.putExtra("teamChoice", teamChoice);
         PlayerTeamOverview.this.startActivity(q);
     }
 
     public void onViewResults(View view) {
+        teamChoice = getIntent().getStringExtra("teamChoice");
         spinner = findViewById(R.id.spinner_dataEntryResults);
         String eventType = spinner.getSelectedItem().toString();
         String type = "viewplayerresults";
 
         //Exectute the backgroundoworker to connect to database, sending username, password and execution type as parameters
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute(type, username, eventType);
+        backgroundWorker.execute(type, username, eventType, teamChoice);
     }
 
     @Override

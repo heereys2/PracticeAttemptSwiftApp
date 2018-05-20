@@ -181,6 +181,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             try {
                 username = params[1];
                 String eventtype = params[2];
+                String teamname = params[3];
                 URL url = new URL(viewplayerdata_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("GET");
@@ -189,7 +190,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                 String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+
-                        URLEncoder.encode("eventtype","UTF-8")+"="+URLEncoder.encode(eventtype,"UTF-8");
+                        URLEncoder.encode("eventtype","UTF-8")+"="+URLEncoder.encode(eventtype,"UTF-8")+"&"+
+                        URLEncoder.encode("teamname","UTF-8")+"="+URLEncoder.encode(teamname,"UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -410,9 +412,10 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             try {
                 //Store the 4 values passed in the PlayerEnterData class
                 String username = params[1];
-                String eventtype = params[2];
-                String value = params[3];
-                String date = params[4];
+                String teamname = params[2];
+                String eventtype = params[3];
+                String value = params[4];
+                String date = params[5];
                 //Create a new URL with the value of the saveplayerdata_url created earlier
                 URL url = new URL(saveplayerdata_url);
                 //connect to the file
@@ -424,6 +427,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                 //POST the 4 String values to the PHP file
                 String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+
+                        URLEncoder.encode("teamname","UTF-8")+"="+URLEncoder.encode(teamname,"UTF-8")+"&"+
                         URLEncoder.encode("eventtype","UTF-8")+"="+URLEncoder.encode(eventtype,"UTF-8")+"&"+
                         URLEncoder.encode("value","UTF-8")+"="+URLEncoder.encode(value,"UTF-8")+"&"+
                         URLEncoder.encode("date","UTF-8")+"="+URLEncoder.encode(date,"UTF-8");
@@ -786,12 +790,12 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
             Intent e = new Intent(context, PlayerHome.class);
             e.putExtra("username",username);
-            e.putExtra("teamchoice", teamChoice);
             context.startActivity(e);
         }
         else if (result.equals("Results Found")) {
             Intent w = new Intent(context, PlayerViewResults.class);
             w.putExtra("resultData", resultData);
+            w.putExtra("username", username);
             context.startActivity(w);
         }
         else if (result.equals("Results Not Found")) {
