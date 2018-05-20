@@ -28,8 +28,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BackgroundWorker"
-            android:label="@string/title_activity_background_worker"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_background_worker" />
         <activity
             android:name=".Register"
             android:label="@string/title_activity_register"
@@ -55,12 +54,9 @@
         <activity android:name=".CreateClub" />
         <activity android:name=".PlayerTeamOverview" />
         <activity android:name=".PlayerDataEntry" />
-        <activity android:name=".CoachTeamChoice">
-
-        </activity>
-        <activity android:name=".StopwatchMultiFunction">
-
-        </activity>
+        <activity android:name=".CoachTeamChoice" />
+        <activity android:name=".StopwatchMultiFunction" />
+      <activity android:name=".PlayerViewResults"></activity>
     </application>
 
 </manifest>

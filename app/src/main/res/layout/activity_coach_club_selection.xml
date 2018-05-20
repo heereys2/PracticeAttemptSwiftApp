@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/whitegradiant"
     tools:context="ie.swiftapp.practiceattemptswiftapp.CoachClubSelection"
     tools:layout_editor_absoluteY="81dp">
 
@@ -59,6 +60,7 @@
 
     <Button
         android:id="@+id/submitTeamChoice"
+        style="@style/MyButtonStyle"
         android:layout_width="178dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="116dp"
@@ -100,6 +102,7 @@
 
     <Button
         android:id="@+id/goToRegisterClub"
+        style="@style/MyButtonStyle"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="129dp"
@@ -113,6 +116,7 @@
 
     <Button
         android:id="@+id/goToRegisterTeam"
+        style="@style/MyButtonStyle"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="129dp"

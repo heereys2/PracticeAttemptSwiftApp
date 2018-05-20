@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/whitegradiant"
     tools:context="ie.swiftapp.practiceattemptswiftapp.Register"
     tools:layout_editor_absoluteY="25dp"><![CDATA[
     tools:layout_editor_absoluteY="81dp">
@@ -14,13 +15,12 @@
         android:id="@+id/et_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="45dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/et_password"
+        app:layout_constraintBottom_toTopOf="@+id/et_username"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -34,7 +34,7 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintStart_toStartOf="@+id/et_username"
-        app:layout_constraintTop_toBottomOf="@+id/et_email" />
+        app:layout_constraintTop_toBottomOf="@+id/et_username" />
 
 
     <EditText
@@ -44,27 +44,28 @@
         android:ems="10"
         android:hint="Create Username"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/et_password"
         app:layout_constraintStart_toStartOf="@+id/et_email"
         app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
     <Button
         android:id="@+id/btn_reg"
-        android:layout_width="121dp"
+        style="@style/MyButtonStyle"
+        android:layout_width="205dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="239dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginRight="18dp"
+        android:layout_marginBottom="101dp"
         android:onClick="OnReg"
-        android:text="Register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+        android:text="@string/register"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="224dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="100dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/btn_reg"
         app:layout_constraintStart_toStartOf="@+id/et_password"
@@ -108,5 +109,16 @@
         app:layout_constraintBottom_toTopOf="@+id/et_email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="140dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="51dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_reg"
+        app:srcCompat="@drawable/swiftfinallogo" />
 
 </android.support.constraint.ConstraintLayout>
