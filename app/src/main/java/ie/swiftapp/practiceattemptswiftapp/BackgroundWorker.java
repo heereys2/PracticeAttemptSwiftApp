@@ -32,6 +32,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     }
     public String username, teamChoice;
     public String[] playerList;
+    public String[] resultData;
     public String clubNameSpinnerChoice;
     public String[] userTeams;
     public String[] amountOfTeams;
@@ -55,6 +56,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         String playerclubjoin_url = "http://swiftproject.000webhostapp.com/playerclubjoin.php";
         String playerteamchoice_url = "http://swiftproject.000webhostapp.com/teamsforplayer.php";
         String addplayertoteam_url = "http://swiftproject.000webhostapp.com/addplayertoteam.php";
+        String viewplayerdata_url = "http://swiftproject.000webhostapp.com/viewplayerdata.php";
         if(type.equals("login")) {
             try {
                 //Store values passed from login activirt
@@ -163,6 +165,44 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                     playerList = new String[lineArray.length-1];
                     for(int i =0; i < lineArray.length -1; i++) {
                         playerList[i] =lineArray[i].replaceAll("//","");
+                    }
+                    result = lineArray[lineArray.length -1];
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if(type.equals("viewplayerresults")) {
+            try {
+                username = params[1];
+                String eventtype = params[2];
+                URL url = new URL(viewplayerdata_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("GET");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+
+                        URLEncoder.encode("eventtype","UTF-8")+"="+URLEncoder.encode(eventtype,"UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result ="";
+                String line = "";
+                while((line = bufferedReader.readLine())!= null) {
+                    String [] lineArray = line.split("//");
+                    resultData = new String[lineArray.length-1];
+                    for(int i =0; i < lineArray.length -1; i++) {
+                        resultData[i] =lineArray[i].replaceAll("//","");
                     }
                     result = lineArray[lineArray.length -1];
                 }
@@ -748,6 +788,14 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             e.putExtra("username",username);
             e.putExtra("teamchoice", teamChoice);
             context.startActivity(e);
+        }
+        else if (result.equals("Results Found")) {
+            Intent w = new Intent(context, PlayerViewResults.class);
+            w.putExtra("resultData", resultData);
+            context.startActivity(w);
+        }
+        else if (result.equals("Results Not Found")) {
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
         }
     }
 

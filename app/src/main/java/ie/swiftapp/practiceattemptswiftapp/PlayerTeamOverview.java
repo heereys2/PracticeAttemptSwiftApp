@@ -12,6 +12,7 @@ import android.widget.TextView;
 public class PlayerTeamOverview extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     String dataChoiceResult, teamChoice, username;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,7 @@ public class PlayerTeamOverview extends AppCompatActivity implements AdapterView
         TextView teamName = (TextView) findViewById(R.id.txtTeamName);
         teamName.setText(teamChoice);
 
-        Spinner spinner = findViewById(R.id.spinner_dataEntryResults);
+        spinner = findViewById(R.id.spinner_dataEntryResults);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.dataentry, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -39,6 +40,16 @@ public class PlayerTeamOverview extends AppCompatActivity implements AdapterView
         Intent q = new Intent(PlayerTeamOverview.this, PlayerDataEntry.class);
         q.putExtra("username", username);
         PlayerTeamOverview.this.startActivity(q);
+    }
+
+    public void onViewResults(View view) {
+        spinner = findViewById(R.id.spinner_dataEntryResults);
+        String eventType = spinner.getSelectedItem().toString();
+        String type = "viewplayerresults";
+
+        //Exectute the backgroundoworker to connect to database, sending username, password and execution type as parameters
+        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+        backgroundWorker.execute(type, username, eventType);
     }
 
     @Override

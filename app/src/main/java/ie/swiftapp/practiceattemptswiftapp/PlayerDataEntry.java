@@ -30,7 +30,7 @@ public class PlayerDataEntry extends AppCompatActivity implements AdapterView.On
         spinner.setOnItemSelectedListener(this);
 
         //This stores the current data in the form DD/MM/YYYY in a string. This is entered to the database to show when an activity was done, for progression purposes
-        date = new SimpleDateFormat("dd_MM_yyyy").format(Calendar.getInstance().getTime());
+        date = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
     }
 
     //This updates the dropdown menu value when it is changed
