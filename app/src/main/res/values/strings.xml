@@ -69,4 +69,6 @@
     <string name="start_the_timer">Start the Timer</string>
     <string name="cancel_the_timer">Cancel The timer</string>
     <string name="restart_all">Restart all</string>
+    <string name="StopwatchMultiFunction"></string>
+    <string name="save_results">save Results</string>
 </resources>

@@ -55,8 +55,12 @@
         <activity android:name=".CreateClub" />
         <activity android:name=".PlayerTeamOverview" />
         <activity android:name=".PlayerDataEntry" />
-        <activity android:name=".CoachTeamChoice"></activity>
-        <activity android:name=".StopwatchMultiFunction"></activity>
+        <activity android:name=".CoachTeamChoice">
+
+        </activity>
+        <activity android:name=".StopwatchMultiFunction">
+
+        </activity>
     </application>
 
 </manifest>
