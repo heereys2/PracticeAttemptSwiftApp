@@ -132,7 +132,7 @@
             android:layout_height="match_parent"
             android:layout_column="0"
             android:layout_margin="1dp"
-            android:background="#FFFFFF"
+            android:background="#FFFfff"
             android:gravity="center"
             android:text=" Text"
             android:textAppearance="?android:attr/textAppearanceLarge" />
