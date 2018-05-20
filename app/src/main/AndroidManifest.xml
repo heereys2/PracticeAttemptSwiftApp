@@ -56,7 +56,8 @@
         <activity android:name=".PlayerDataEntry" />
         <activity android:name=".CoachTeamChoice" />
         <activity android:name=".StopwatchMultiFunction" />
-      <activity android:name=".PlayerViewResults"></activity>
+        <activity android:name=".PlayerViewResults" />
+        <activity android:name=".storeTimeActivityMulti"></activity>
     </application>
 
 </manifest>

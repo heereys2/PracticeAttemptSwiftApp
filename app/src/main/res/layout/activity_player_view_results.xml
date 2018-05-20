@@ -141,7 +141,7 @@
                 android:text=" Text"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#142C67" />
-        </TableRow>
+      </TableRow>
 
         <TableRow android:background="#000000">
 
