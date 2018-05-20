@@ -13,7 +13,7 @@ import java.util.Calendar;
 
 public class PlayerDataEntry extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    String dataChoice, dataValue, date, username;
+    String dataChoice, dataValue, date, username, teamChoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class PlayerDataEntry extends AppCompatActivity implements AdapterView.On
         //The username, data type, data value and date are stored in strings. The background worker execution type is also stored
         dataValue = ((EditText) findViewById(R.id.etdataValue)).getText().toString();
         String str_username = username;
+        teamChoice = getIntent().getStringExtra("teamChoice");
         String str_datachoice = dataChoice.toString();
         String str_datavalue = dataValue.toString();
         String str_date = date.toString();
@@ -56,7 +57,7 @@ public class PlayerDataEntry extends AppCompatActivity implements AdapterView.On
 
         //The aboove variables are passed to the background worker which communicates with the database
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute(type, str_username, str_datachoice, str_datavalue, str_date);
+        backgroundWorker.execute(type, str_username, teamChoice, str_datachoice, str_datavalue, str_date);
 
     }
 }

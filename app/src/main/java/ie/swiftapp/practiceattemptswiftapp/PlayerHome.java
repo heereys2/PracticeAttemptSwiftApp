@@ -9,7 +9,7 @@ import android.widget.Spinner;
 
 public class PlayerHome extends AppCompatActivity {
 
-    public String user_name, teamChoice;
+    public String user_name, username, teamChoice;
     public String userTeamArray[];
     public Spinner userTeamSpinner;
     @Override
@@ -34,6 +34,7 @@ public class PlayerHome extends AppCompatActivity {
 
     public void onJoinTeam(View view) {
             String type = "allclubsforplayers";
+            username = getIntent().getStringExtra("username");
             BackgroundWorker back = new BackgroundWorker(this);
             back.execute(type,user_name);
     }
