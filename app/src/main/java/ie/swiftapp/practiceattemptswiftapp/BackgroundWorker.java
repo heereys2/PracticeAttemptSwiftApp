@@ -609,6 +609,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         } else if(type.equals("addplayertoteam")) {
             try {
                 String userName = params[1];
+                username = userName;
                 String clubName = params[2];
                 String teamName = params[3];
                 URL url = new URL(addplayertoteam_url);
@@ -644,8 +645,8 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             }
         } else if (type.equals("joinTeam")){
             try {
-                String teamName = params[1];
-                String username = params[4];
+                String teamName = params[2];
+                String username = params[1];
                 URL url = new URL(joinTeam_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -790,6 +791,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
             Intent e = new Intent(context, PlayerHome.class);
             e.putExtra("username",username);
+            e.putExtra("clubsArray", userTeams);
             context.startActivity(e);
         }
         else if (result.equals("Results Found")) {
