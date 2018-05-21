@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ie.swiftapp.practiceattemptswiftapp.CoachStopwatch">
+    android:background="@drawable/whitegradiant"
+    tools:context="ie.swiftapp.practiceattemptswiftapp.CoachStopwatch"
+    tools:layout_editor_absoluteY="81dp">
 
 
     <Button
         android:id="@+id/multiPlayer"
+        style="@style/MyButtonStyle"
         android:layout_width="192dp"
-        android:layout_height="108dp"
-        android:layout_marginBottom="122dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="71dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="68dp"
         android:onClick="onClickMulti"
         android:text="@string/multiPlayerButton"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,30 +24,40 @@
 
     <Button
         android:id="@+id/onePlayer"
+        style="@style/MyButtonStyle"
         android:layout_width="192dp"
-        android:layout_height="108dp"
-        android:layout_marginBottom="71dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="122dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="62dp"
         android:onClick="onClickOne"
         android:text="@string/onePlayerButton"
         app:layout_constraintBottom_toTopOf="@+id/multiPlayer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="189dp"
-        android:layout_height="67dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
         android:text="@string/choose_type_of_stopwatch"
-        android:textSize="24sp"
         android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/onePlayer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="166dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="27dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/swiftfinallogo" />
 </android.support.constraint.ConstraintLayout>

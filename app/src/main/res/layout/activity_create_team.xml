@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/whitegradiant"
     tools:context=".CreateTeam"
     tools:layout_editor_absoluteY="81dp">
 
@@ -11,22 +12,25 @@
         android:id="@+id/et_TeamName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="63dp"
+        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:ems="10"
         android:hint="Team Name"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/et_ClubName"
+        app:layout_constraintEnd_toEndOf="@+id/imageView12"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
     <EditText
         android:id="@+id/et_ClubName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="29dp"
         android:ems="10"
         android:hint="Club"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_Sport"
         app:layout_constraintStart_toStartOf="@+id/et_TeamName"
         app:layout_constraintTop_toBottomOf="@+id/et_TeamName" />
 
@@ -34,24 +38,37 @@
         android:id="@+id/spinner_Sport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="182dp"
-        android:layout_marginStart="181dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="39dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_ClubName"
-        android:layout_marginLeft="181dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btn_MakeClub"
+        app:layout_constraintStart_toStartOf="@+id/btn_MakeClub"
+        app:layout_constraintTop_toBottomOf="@+id/et_ClubName" />
 
     <Button
         android:id="@+id/btn_MakeClub"
+        style="@style/MyButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
+        android:layout_marginBottom="229dp"
         android:onClick="onMakeClub"
         android:text="@string/createClubButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_Sport" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="237dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="26dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginRight="69dp"
+        app:layout_constraintBottom_toTopOf="@+id/et_TeamName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/swiftfinallogo" />
 
 </android.support.constraint.ConstraintLayout>
